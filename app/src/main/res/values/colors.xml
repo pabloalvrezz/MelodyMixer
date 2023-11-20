@@ -13,7 +13,7 @@
     <color name="boton_oscuro">#3a415a</color>  //Botones
 
     //Modo Claro
-    <color name="fondo_claro">#cbdad5</color>   //Fondo
+    <color name="fondo_claro">#cbdad5</color>   //Fondos
     <color name="boton_claro">#89a7b1</color>   //Botones
 
     //Color intermedio

@@ -1,15 +1,20 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test.espresso:espresso-core:3.5.1@aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/res" />
-      <root url="file://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/res" />
+      <root url="file://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/AndroidManifest.xml" />
+      <root url="file://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/res" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/jars/classes.jar!/" />
+      <root url="file://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/f554bff3da705383f4f939a4a25e4798/espresso-core-3.5.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/5aa814b4dae9b17188d620668107d85e687388de/espresso-core-3.5.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/5aa814b4dae9b17188d620668107d85e687388de/espresso-core-3.5.1-javadoc.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/5aa814b4dae9b17188d620668107d85e687388de/espresso-core-3.5.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/50bb4dd95e68eb3fdc986995afab6730be477cdb/espresso-core-3.5.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/50bb4dd95e68eb3fdc986995afab6730be477cdb/espresso-core-3.5.1-sources.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-core/3.5.1/50bb4dd95e68eb3fdc986995afab6730be477cdb/espresso-core-3.5.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

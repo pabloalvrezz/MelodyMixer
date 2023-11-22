@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.concurrent:concurrent-futures:1.1.0">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/50b7fb98350d5f42a4e49704b03278542293ba48/concurrent-futures-1.1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/50b7fb98350d5f42a4e49704b03278542293ba48/concurrent-futures-1.1.0.jar!/" />
     </CLASSES>
@@ -8,6 +9,15 @@
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/a27842adf6c42f3d80893bd46e1de4ac024218e7/concurrent-futures-1.1.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/a27842adf6c42f3d80893bd46e1de4ac024218e7/concurrent-futures-1.1.0-sources.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/50b7fb98350d5f42a4e49704b03278542293ba48/concurrent-futures-1.1.0.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/50b7fb98350d5f42a4e49704b03278542293ba48/concurrent-futures-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/a27842adf6c42f3d80893bd46e1de4ac024218e7/concurrent-futures-1.1.0-sources.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.concurrent/concurrent-futures/1.1.0/a27842adf6c42f3d80893bd46e1de4ac024218e7/concurrent-futures-1.1.0-sources.jar!/" />
+>>>>>>> 7f4fee24bc49c8673e680aea4aa0cc3c00150327
     </SOURCES>
   </library>
 </component>

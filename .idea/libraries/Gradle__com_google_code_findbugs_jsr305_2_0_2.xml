@@ -1,8 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.code.findbugs:jsr305:2.0.2">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.2/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.2/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.2.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.2/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.2.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.2/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.2.jar!/" />
+>>>>>>> 7f4fee24bc49c8673e680aea4aa0cc3c00150327
     </CLASSES>
     <JAVADOC />
     <SOURCES />

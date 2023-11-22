@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.collection:collection:1.1.0">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar!/" />
     </CLASSES>
@@ -8,6 +9,15 @@
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/bae67b0019fbb38498198fcc2d0282a340b71c5b/collection-1.1.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/bae67b0019fbb38498198fcc2d0282a340b71c5b/collection-1.1.0-sources.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/bae67b0019fbb38498198fcc2d0282a340b71c5b/collection-1.1.0-sources.jar!/" />
+      <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/bae67b0019fbb38498198fcc2d0282a340b71c5b/collection-1.1.0-sources.jar!/" />
+>>>>>>> 7f4fee24bc49c8673e680aea4aa0cc3c00150327
     </SOURCES>
   </library>
 </component>

@@ -3,7 +3,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class tabla_CANCIONES {
-    public static final String TABLE_NAME = "sCANCIONES";
+    public static final String TABLE_NAME = "CANCIONES";
 
     public static class ColumnasCanciones {
         public static final String COLUMNA_ID = "id";

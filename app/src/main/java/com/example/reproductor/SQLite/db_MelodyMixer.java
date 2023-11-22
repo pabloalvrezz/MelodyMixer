@@ -2,6 +2,9 @@ package com.example.reproductor.SQLite;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.content.ContentValues;
+
+import com.example.reproductor.Entities.Usuarios;
 
 public class db_MelodyMixer extends SQLiteOpenHelper {
 
@@ -45,5 +48,18 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.execSQL(tabla_CANCIONES.SQL_CREATE_TABLE);
         db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);
         db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
+    }
+
+    public void addUsuario(SQLiteDatabase db) {
+
+        db.execSQL(tabla_USUARIOS.INSERTA_DEFECTO);
+
+        /*ContentValues values = new ContentValues();
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID, user.getId());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_USUARIO, user.getUsuario());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_APELLIDOS, user.getApellidos());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA, user.getContraseña());
+
+        db.insert(tabla_USUARIOS.TABLE_NAME, null, values);*/
     }
 }

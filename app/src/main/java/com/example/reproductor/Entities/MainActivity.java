@@ -1,5 +1,6 @@
 package com.example.reproductor.Entities;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,17 +31,28 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewCanciones;
     private CancionAdapter cancionAdapter;
     private ApiManager apiManager;
+    private Button btnSignUp;
+    private EditText edUsuario, edApellidos, edContraseña;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-        setContentView(R.layout.reproductor);
+        setContentView(R.layout.singup);
 
-=======
-        setContentView(R.layout.singin);
         db_MelodyMixer database = new db_MelodyMixer(this);
->>>>>>> 0d195a65e50e7ea5f33ed896dd9a63f973e6548d
+        SQLiteDatabase db = database.getWritableDatabase();
+
+        edUsuario = findViewById(R.id.edtUsuario3);
+        edApellidos = findViewById(R.id.edtUsuario4);
+        edContraseña = findViewById(R.id.edtContraseña);
+        btnSignUp = findViewById(R.id.btnSingUp);
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database.addUsuario(db);
+            }
+        });
     }
 
     private void realizarBusqueda(String busqueda) {

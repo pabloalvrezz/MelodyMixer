@@ -15,14 +15,19 @@ public class tabla_USUARIOS {
 
     public static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    ColumnasUsuarios.COLUMNA_ID + " TEXT PRIMARY KEY," +
+                    ColumnasUsuarios.COLUMNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     ColumnasUsuarios.COLUMNA_USUARIO + " TEXT," +
                     ColumnasUsuarios.COLUMNA_APELLIDOS + " TEXT," +
                     ColumnasUsuarios.COLUMNA_CONTRASEÑA + " TEXT)";
 
     //Insertamos valores por defecto
     public static final String INSERTA_DEFECTO =
-            "insert into "+TABLE_NAME+" values(null, null, null, null)";
+            "INSERT INTO " + TABLE_NAME + " (" +
+                    ColumnasUsuarios.COLUMNA_USUARIO + ", " +
+                    ColumnasUsuarios.COLUMNA_APELLIDOS + ", " +
+                    ColumnasUsuarios.COLUMNA_CONTRASEÑA + ") " +
+                    "VALUES ('admin', 'ApellidoAdmin', 'admin')";
+
 
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;

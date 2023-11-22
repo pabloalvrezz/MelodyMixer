@@ -16,8 +16,8 @@ public class Canciones {
     private long id;
     private String nombre;
     private Artistas artista;
-    private Albumes album;
     private int duracion;
     private String genero;
+    private String linkImage;
 
 }

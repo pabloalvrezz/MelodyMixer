@@ -17,6 +17,10 @@ public class tabla_ARTISTAS {
                     ColumnasArtistas.COLUMNA_ID + " INTEGER PRIMARY KEY," +
                     ColumnasArtistas.COLUMNA_NOMBRE + " TEXT)";
 
+    //Insertamos valores por defecto
+    public static final String INSERTA_DEFECTO =
+            "insert into "+TABLE_NAME+" values(null, null)";
+
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;
 

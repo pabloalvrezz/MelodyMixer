@@ -22,6 +22,10 @@ public class tabla_CANCIONES {
                     ColumnasCanciones.COLUMNA_GENERO + " TEXT," +
                     "FOREIGN KEY(" + ColumnasCanciones.COLUMNA_ARTISTA_ID + ") REFERENCES " + tabla_ARTISTAS.TABLE_NAME + "(" + tabla_ARTISTAS.ColumnasArtistas.COLUMNA_ID + "))";
 
+    //Insertamos valores por defecto
+    public static final String INSERTA_DEFECTO =
+            "insert into "+TABLE_NAME+" values(null, null, null, null, null)";
+
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;
 

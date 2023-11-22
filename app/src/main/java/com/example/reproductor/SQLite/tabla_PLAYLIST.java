@@ -18,6 +18,10 @@ public class tabla_PLAYLIST {
                     ColumnasPlayList.COLUMNA_ID_USUARIO + " TEXT," +
                     "FOREIGN KEY(" + ColumnasPlayList.COLUMNA_ID_USUARIO + ") REFERENCES " + tabla_USUARIOS.TABLE_NAME + "(" + tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + "))";
 
+    //Insertamos valores por defecto
+    public static final String INSERTA_DEFECTO =
+            "insert into "+TABLE_NAME+" values(null, null, null)";
+
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;
 

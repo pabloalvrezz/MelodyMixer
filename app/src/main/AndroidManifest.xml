@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
-        <activity android:name=".MainPage.MainPage"
+        <activity android:name=".Entities.MainActivity"
             tools:ignore="Instantiatable,MissingClass">
             tools:ignore="MissingClass"
             android:exported="true">

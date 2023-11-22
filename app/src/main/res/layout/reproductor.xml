@@ -34,7 +34,6 @@
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="50dp"
-
             android:layout_height="45dp"
             android:backgroundTint="@color/transparente"
             android:scaleType="centerInside"

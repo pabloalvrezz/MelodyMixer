@@ -2,4 +2,8 @@
     <string name="app_name">Reproductor</string>
 
     <string name="texto_acercade">Somos el grupo formado por:\n\nPablo Álvarez\nIker Pérez\nDaniel Isla\nAinhoa Lodeiro\n\nEsta aplicación está diseñada para que diferentes usuarios que se registren puedan encontrar su música preferida y crear playlists a partir de sus canciones favoritas.</string>
+    <string name="melodymixer">MelodyMixer</string>
+    <string name="recomendados">Recommended</string>
+    <string name="ownplaylists">Your own playlists</string>
+    <string name="good_morning">Good morning</string>
 </resources>

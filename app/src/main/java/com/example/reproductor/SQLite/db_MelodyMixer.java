@@ -16,13 +16,34 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Se crean las tablas
         db.execSQL(tabla_USUARIOS.SQL_CREATE_TABLE);
-        /*db.execSQL(tabla_ARTISTA.SQL_CREATE_TABLE);
-        db.execSQL(tabla_ALBUM.SQL_CREATE_TABLE);
+        db.execSQL(tabla_ARTISTAS.SQL_CREATE_TABLE);
         db.execSQL(tabla_CANCIONES.SQL_CREATE_TABLE);
-        db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);*/
+        db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);
+        db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
+
+        //Se le meten datos
+        db.execSQL(tabla_USUARIOS.INSERTA_DEFECTO);
+        db.execSQL(tabla_ARTISTAS.INSERTA_DEFECTO);
+        db.execSQL(tabla_CANCIONES.INSERTA_DEFECTO);
+        db.execSQL(tabla_PLAYLIST.INSERTA_DEFECTO);
+        db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_DEFECTO);
     }
 
+    //Para recrear las tablas
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //Comprobamos que estén ya creadas y las borramos en caso afirmativo
+        db.execSQL("DROP TABLE IF EXISTS " + tabla_USUARIOS.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + tabla_ARTISTAS.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + tabla_CANCIONES.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + tabla_PLAYLIST.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + tabla_PLAYLIST_CANCION.TABLE_NAME);
+
+        //Las creamos de nuevo
+        db.execSQL(tabla_USUARIOS.SQL_CREATE_TABLE);
+        db.execSQL(tabla_ARTISTAS.SQL_CREATE_TABLE);
+        db.execSQL(tabla_CANCIONES.SQL_CREATE_TABLE);
+        db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);
+        db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
     }
 }

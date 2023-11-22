@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
         <activity android:name=".Entities.MainActivity"
+<<<<<<< HEAD
             tools:ignore="Instantiatable,MissingClass">
+=======
+            tools:ignore="MissingClass"
+            android:exported="true">
+>>>>>>> 0d195a65e50e7ea5f33ed896dd9a63f973e6548d
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

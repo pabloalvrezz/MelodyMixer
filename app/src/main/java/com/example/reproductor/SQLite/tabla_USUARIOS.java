@@ -1,4 +1,6 @@
 package com.example.reproductor.SQLite;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 public class tabla_USUARIOS {
     public static final String TABLE_NAME = "USUARIOS";
@@ -14,6 +16,20 @@ public class tabla_USUARIOS {
     public static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     ColumnasUsuarios.COLUMNA_ID + " TEXT PRIMARY KEY," +
-                    ColumnasUsuarios.COLUMNA_USUARIO + " TEXT," + ColumnasUsuarios.COLUMNA_APELLIDOS + " TEXT," +
+                    ColumnasUsuarios.COLUMNA_USUARIO + " TEXT," +
+                    ColumnasUsuarios.COLUMNA_APELLIDOS + " TEXT," +
                     ColumnasUsuarios.COLUMNA_CONTRASEÑA + " TEXT)";
+
+    //Insertamos valores por defecto
+    public static final String INSERTA_DEFECTO =
+            "insert into "+TABLE_NAME+" values(null, null, null, null)";
+
+    private db_MelodyMixer openHelper;
+    private SQLiteDatabase database;
+
+    //Creando una instancia hacia la base de datos
+    public tabla_USUARIOS(Context context) {
+        openHelper = new db_MelodyMixer(context);
+        database = openHelper.getWritableDatabase();
+    }
 }

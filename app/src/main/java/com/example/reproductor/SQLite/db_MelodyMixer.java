@@ -16,13 +16,14 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Se crean las tablas
         db.execSQL(tabla_USUARIOS.SQL_CREATE_TABLE);
-        /*db.execSQL(tabla_ARTISTA.SQL_CREATE_TABLE);
-        db.execSQL(tabla_ALBUM.SQL_CREATE_TABLE);
+        db.execSQL(tabla_ARTISTAS.SQL_CREATE_TABLE);
+        db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
         db.execSQL(tabla_CANCIONES.SQL_CREATE_TABLE);
-        db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);*/
+        db.execSQL(tabla_PLAYLIST.SQL_CREATE_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //Se modifican las tablas
     }
 }

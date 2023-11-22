@@ -1,4 +1,6 @@
 package com.example.reproductor.SQLite;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 public class tabla_ARTISTAS {
 
@@ -14,4 +16,14 @@ public class tabla_ARTISTAS {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     ColumnasArtistas.COLUMNA_ID + " INTEGER PRIMARY KEY," +
                     ColumnasArtistas.COLUMNA_NOMBRE + " TEXT)";
+
+    private db_MelodyMixer openHelper;
+    private SQLiteDatabase database;
+
+
+    //Creando una instancia hacia la base de datos
+    public tabla_ARTISTAS(Context context) {
+        openHelper = new db_MelodyMixer(context);
+        database = openHelper.getWritableDatabase();
+    }
 }

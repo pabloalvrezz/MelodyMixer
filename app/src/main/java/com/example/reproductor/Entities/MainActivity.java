@@ -21,6 +21,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.example.reproductor.SQLite.db_MelodyMixer;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextBuscar;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.singin);
+        db_MelodyMixer database = new db_MelodyMixer(this);
     }
 
     private void realizarBusqueda(String busqueda) {

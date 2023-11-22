@@ -3,11 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.reproductor">
 
-<<<<<<< HEAD
-=======
     <uses-permission android:name="android.permission.INTERNET"/>
 
->>>>>>> 42c8dc7 (Probar api con la busqueda de Canciones)
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

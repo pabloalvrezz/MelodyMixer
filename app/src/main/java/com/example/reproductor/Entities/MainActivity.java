@@ -32,33 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.singin);
 
-        editTextBuscar = findViewById(R.id.editTextBuscar);
-        btnBuscar = findViewById(R.id.btnBuscar);
-        recyclerViewCanciones = findViewById(R.id.recyclerViewCanciones);
-
-        apiManager = new ApiManager();
-
-        // Configurar el RecyclerView
-        List<String> listaCanciones = apiManager.obtenerNombresCanciones(null); // Puedes inicializar con una lista vacía
-        cancionAdapter = new CancionAdapter(listaCanciones);
-        recyclerViewCanciones.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewCanciones.setAdapter(cancionAdapter);
-
-        // Configurar el botón de búsqueda
-        btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String busqueda = editTextBuscar.getText().toString().trim();
-
-                if (!busqueda.isEmpty()) {
-                    realizarBusqueda(busqueda);
-                } else {
-                    Toast.makeText(MainActivity.this, "Ingrese un término de búsqueda", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     private void realizarBusqueda(String busqueda) {

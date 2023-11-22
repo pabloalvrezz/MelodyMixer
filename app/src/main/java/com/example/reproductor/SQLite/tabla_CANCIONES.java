@@ -1,4 +1,4 @@
-package SQLite;
+package com.example.reproductor.SQLite;
 
 public class tabla_CANCIONES {
     public static final String TABLE_NAME = "sCANCIONES";

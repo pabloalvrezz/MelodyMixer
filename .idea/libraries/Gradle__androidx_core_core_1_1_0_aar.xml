@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/annotations.zip!/" />
       <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/annotations.zip!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/annotations.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/jars/classes.jar!/" />
@@ -15,12 +16,16 @@
       <root url="file://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/AndroidManifest.xml" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/res" />
+      <root url="file://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/transforms-2/files-2.1/ae31cc97a3f9383e0242537d69427d3a/core-1.1.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.core/core/1.1.0/4ae37fad1fe95b42aa47a720908df37ba5d3c85e/core-1.1.0-sources.jar!/" />
       <root url="jar://C:/Users/Iker/Desktop/CLASE/androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.core/core/1.1.0/4ae37fad1fe95b42aa47a720908df37ba5d3c85e/core-1.1.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.core/core/1.1.0/4ae37fad1fe95b42aa47a720908df37ba5d3c85e/core-1.1.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../androidstudio_v4.1.2/settings/.gradle/caches/modules-2/files-2.1/androidx.core/core/1.1.0/4ae37fad1fe95b42aa47a720908df37ba5d3c85e/core-1.1.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

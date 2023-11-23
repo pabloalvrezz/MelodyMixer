@@ -18,6 +18,7 @@ import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+=======
+>>>>>>> 713d888ee631a06a550e612cb840d8e35820d92d
 
 public class MainActivity extends AppCompatActivity {
 

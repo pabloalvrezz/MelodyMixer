@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,13 +27,15 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView tvwSignIn;
     private EditText editTextBuscar;
     private Button btnBuscar;
     private RecyclerView recyclerViewCanciones;
     private CancionAdapter cancionAdapter;
     private ApiManager apiManager;
-    private Button btnSignUp;
-    private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp;
+    private Button btnSignUp, btnSignIn;
+    private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp,
+                     edCorreoIn, edContraseñaIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +51,19 @@ public class MainActivity extends AppCompatActivity {
         edContraseñaUp = findViewById(R.id.edtContraseñaUp);    //EditText de la contraseña (Registro)
         btnSignUp = findViewById(R.id.btnSingUp);
 
+        tvwSignIn = findViewById(R.id.txvSignIn);
+        edCorreoIn = findViewById(R.id.edtCorreoIn);
+        edContraseñaIn = findViewById(R.id.edtContraseñaIn);
+        btnSignIn = findViewById(R.id.btnSingIn);
+
+
         //Método pa cuando pulse el botón de registro
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
                 //Comprobamos que ninguno de los campos estén vacíos
-                if ((edContraseñaUp.getText() == null) || (edNombreUp.getText() == null) || (edApellidos.getText() == null) || (edCorreoUp.getText() == null)) {
+                if ((edContraseñaUp.getText().toString() == "") || (edNombreUp.getText().toString() == "") || (edApellidos.getText().toString() == "") || (edCorreoUp.getText().toString() == "")) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
@@ -64,6 +73,37 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, MainPage.class);
                     intent.putExtra("usuario", registro);
                     startActivity(intent);
+                }
+            }
+        });
+
+        tvwSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.singin);
+            }
+        });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                //Comprobamos que ninguno de los campos estén vacíos
+                if ((edCorreoIn.getText().toString() == "") || (edContraseñaIn.getText().toString() == "")){
+
+                    Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
+                }
+                else {
+                    Usuarios usuario = new Usuarios();
+                    usuario.setCorreo(edCorreoIn.getText().toString());
+                    usuario.setContraseña(edContraseñaIn.getText().toString());
+                    if(database.existeUsuarioConCorreo(usuario.getCorreo()) && database.existeUsuarioContraseña(usuario.getContraseña())){
+                        intent = new Intent(MainActivity.this, MainPage.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "Este usuario no existe", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
             }
         });

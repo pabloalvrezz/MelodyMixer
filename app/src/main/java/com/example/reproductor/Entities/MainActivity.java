@@ -1,5 +1,6 @@
 package com.example.reproductor.Entities;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.CancionAdapter;
+import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
+import com.example.reproductor.SQLite.db_MelodyMixer;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import com.example.reproductor.SQLite.db_MelodyMixer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,15 +52,18 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent;
                 //Comprobamos que ninguno de los campos estén vacíos
-                if((edContraseñaUp.getText() == null)||(edNombreUp.getText() == null)||(edApellidos.getText() == null)||(edCorreoUp.getText() == null)){
+                if ((edContraseñaUp.getText() == null) || (edNombreUp.getText() == null) || (edApellidos.getText() == null) || (edCorreoUp.getText() == null)) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
-                }
-                else{
+                } else {
                     //Creamos un usuario nuevo con sus credenciales
                     Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                     database.addUsuario(db, registro);
+                    intent = new Intent(MainActivity.this, MainPage.class);
+                    intent.putExtra("usuario", registro);
+                    startActivity(intent);
                 }
             }
         });

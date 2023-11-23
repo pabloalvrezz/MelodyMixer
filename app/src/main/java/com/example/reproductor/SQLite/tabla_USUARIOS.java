@@ -8,11 +8,10 @@ public class tabla_USUARIOS {
     public static final String STRING_TYPE = "text";
 
     public static class ColumnasUsuarios {
-        public static final String COLUMNA_ID = "id_usuario";
+        public static final String COLUMNA_ID = "email";
         public static final String COLUMNA_USUARIO = "usuario";
         public static final String COLUMNA_APELLIDOS = "apellidos";
         public static final String COLUMNA_CONTRASEÑA = "contraseña";
-        public static final String COLUMNA_PLAYLIST = "contraseña";
     }
 
     public static final String SQL_CREATE_TABLE =

@@ -38,9 +38,10 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Canciones currentCancion = listaCanciones.get(position);
 
+
         // Configurar las vistas con datos desde la lista de canciones
-        holder.txtSongNameBuscador.setText(currentCancion.getNombre());
-        holder.txtArtistNameBuscador.setText(currentCancion.getGenero());
+        holder.txtSongNameBuscador.setText(currentCancion.getNombre() != null ? currentCancion.getNombre() : "<Sin Nombre>");
+        holder.txtArtistNameBuscador.setText(currentCancion.getArtistaNombre() != null ? currentCancion.getArtistaNombre() : "<Sin Artista>");
 
         // Obtener la URL de la imagen de la canción
         String imageUrl = currentCancion.getLinkImage();

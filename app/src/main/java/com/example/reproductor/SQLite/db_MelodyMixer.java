@@ -1,6 +1,5 @@
 package com.example.reproductor.SQLite;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
@@ -59,41 +58,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
     }
 
-    //Comprueba que existe un correo en la base de datos
-    public boolean existeUsuarioConCorreo(String correo) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        // Especifica la tabla y las columnas que deseas consultar
-        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID};
-        // Especifica la cláusula WHERE para buscar el correo específico
-        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + " = ?";
-        String[] argumentos = {correo};
-        // Realiza la consulta
-        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
-        // Verifica si se devolvieron filas
-        boolean existeUsuario = cursor.getCount() > 0;
-        // Cierra el cursor y la base de datos
-        cursor.close();
-        db.close();
-        return existeUsuario;
-    }
-
-    public boolean existeUsuarioContraseña(String contraseña) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        // Especifica la tabla y las columnas que deseas consultar
-        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA};
-        // Especifica la cláusula WHERE para buscar el correo específico
-        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA + " = ?";
-        String[] argumentos = {contraseña};
-        // Realiza la consulta
-        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
-        // Verifica si se devolvieron filas
-        boolean existeContraseña = cursor.getCount() > 0;
-        // Cierra el cursor y la base de datos
-        cursor.close();
-        db.close();
-        return existeContraseña;
-    }
-
     //Método para añadir fila a USUARIOS
     public void addUsuario(SQLiteDatabase db, Usuarios usuario) {
         ContentValues values = new ContentValues();
@@ -118,7 +82,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ID, cancion.getId());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_TITULO, cancion.getNombre());
-        values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE, cancion.getArtista().getId());
+        values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE, cancion.getArtistaNombre());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_DURACION, cancion.getDuracion());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_GENERO, cancion.getGenero());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_IMAGE_URL, cancion.getLinkImage());

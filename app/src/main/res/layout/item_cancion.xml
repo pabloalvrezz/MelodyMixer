@@ -6,13 +6,35 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textViewNombreCancion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Nombre de la Canción"
+    <ImageView
+        android:id="@+id/imgSongBuscador"
+        android:layout_width="93dp"
+        android:layout_height="94dp"
+        android:layout_weight="1"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/cargando_cancion_image" />
+
+    <TextView
+        android:id="@+id/txtSongGenre"
+        android:layout_width="225dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgSongBuscador" />
+
+    <TextView
+        android:id="@+id/txtSongNameBuscador"
+        android:layout_width="225dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/imgSongBuscador"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

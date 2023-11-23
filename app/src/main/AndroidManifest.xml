@@ -25,6 +25,9 @@
         <activity android:name=".MainPage.MainPage">
 
         </activity>
+        <activity android:name=".MainPage.BuscadorCanciones">
+
+        </activity>
     </application>
 
 </manifest>

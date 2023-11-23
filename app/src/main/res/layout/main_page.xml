@@ -34,18 +34,13 @@
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="16dp"
         android:text="@string/good_morning"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/rvhListasRecomendadas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtRecomendados"
-        app:layout_constraintTop_toBottomOf="@+id/tlbMenu" />
+        app:layout_constraintStart_toStartOf="@+id/tlbMenu"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloMain" />
 
     <TextView
         android:id="@+id/txtRecomendados"
@@ -101,18 +96,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTusPlaylists" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="180dp"
-        android:layout_height="29dp"
+    <ImageButton
+        android:id="@+id/imbBuscador"
+        android:layout_width="35dp"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textSize="8sp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/transparente"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/txtRecomendados"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlbMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/tlbMenu"
+        app:srcCompat="@drawable/lupa" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,74 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tlbMenu"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/fondo_claro"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtTituloMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/melodymixer"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tlbMenu"
-        app:layout_constraintTop_toTopOf="@+id/tlbMenu" />
-
-    <TextView
-        android:id="@+id/txtSaludo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/good_morning"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/rvhListasRecomendadas"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtRecomendados"
-        app:layout_constraintTop_toBottomOf="@+id/tlbMenu" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.002">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:background="@color/fondo_claro" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/txtRecomendados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="15dp"
+        android:layout_width="91dp"
+        android:layout_height="23dp"
         android:text="@string/recomendados"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/rvhListasRecomendadas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlbMenu" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhListasRecomendadas"
         android:layout_width="397dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/listas_horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/txtRecomendados" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRecomendados"
+        tools:listitem="@layout/listas_horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvhListasDeUsuario"
+        android:layout_width="397dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTusPlaylists"
+        tools:listitem="@layout/listas_horizontal" />
 
     <TextView
         android:id="@+id/txtTusPlaylists"
@@ -89,30 +76,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvhListasRecomendadas" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvhListasDeUsuario"
-        android:layout_width="397dp"
+    <TextView
+        android:id="@+id/txtSaludo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="15dp"
-        android:orientation="horizontal"
-        tools:listitem="@layout/listas_horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTusPlaylists" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="180dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlbMenu" />
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/good_morning"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/rvhListasRecomendadas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtRecomendados" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.78" />
 
     <EditText
-        android:id="@+id/edtUsuario"
+        android:id="@+id/edtCorreoIn"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="false"
@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.534" />
 
     <EditText
-        android:id="@+id/edtContraseña"
+        android:id="@+id/edtContraseñaIn"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="true"
@@ -97,7 +97,7 @@
         android:id="@+id/txvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Iniciar Sesión"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -125,7 +125,7 @@
         android:id="@+id/txvUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Usuario"
+        android:text="Correo"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,7 +8,7 @@ public class tabla_CANCIONES {
     public static class ColumnasCanciones {
         public static final String COLUMNA_ID = "id";
         public static final String COLUMNA_TITULO = "titulo";
-        public static final String COLUMNA_ARTISTA_ID = "artista_id";
+        public static final String COLUMNA_ARTISTA_NOMBRE = "artista_nombre";
         public static final String COLUMNA_DURACION = "duracion";
         public static final String COLUMNA_GENERO = "genero";
         public static final String COLUMNA_IMAGE_URL = "imageUrl";
@@ -19,19 +19,19 @@ public class tabla_CANCIONES {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     ColumnasCanciones.COLUMNA_ID + " INTEGER PRIMARY KEY," +
                     ColumnasCanciones.COLUMNA_TITULO + " TEXT," +
-                    ColumnasCanciones.COLUMNA_ARTISTA_ID + " INTEGER," +
+                    ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE + " TEXT," +
                     ColumnasCanciones.COLUMNA_DURACION + " INTEGER," +
                     ColumnasCanciones.COLUMNA_GENERO + " TEXT," +
                     ColumnasCanciones.COLUMNA_IMAGE_URL + " TEXT," +
                     ColumnasCanciones.COLUMNA_PREVIEW_URL + " TEXT," +
-                    "FOREIGN KEY(" + ColumnasCanciones.COLUMNA_ARTISTA_ID + ") REFERENCES " + tabla_ARTISTAS.TABLE_NAME + "(" + tabla_ARTISTAS.ColumnasArtistas.COLUMNA_ID + "))";
+                    "FOREIGN KEY(" + ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE + ") REFERENCES " + tabla_ARTISTAS.TABLE_NAME + "(" + tabla_ARTISTAS.ColumnasArtistas.COLUMNA_NOMBRE + "))";
 
     //Insertamos valores por defecto
     //Insertamos la primera cancion
     public static final String INSERTA_CANCION1 = "INSERT INTO " + TABLE_NAME + " (" +
             ColumnasCanciones.COLUMNA_ID+ ", " +
             ColumnasCanciones.COLUMNA_TITULO + ", " +
-            ColumnasCanciones.COLUMNA_ARTISTA_ID + ", " +
+            ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE + ", " +
             ColumnasCanciones.COLUMNA_DURACION + ", " +
             ColumnasCanciones.COLUMNA_GENERO + ", " +
             ColumnasCanciones.COLUMNA_IMAGE_URL + ", " +
@@ -44,7 +44,7 @@ public class tabla_CANCIONES {
     public static final String INSERTA_CANCION2 = "INSERT INTO " + TABLE_NAME + " (" +
             ColumnasCanciones.COLUMNA_ID+ ", " +
             ColumnasCanciones.COLUMNA_TITULO + ", " +
-            ColumnasCanciones.COLUMNA_ARTISTA_ID + ", " +
+            ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE + ", " +
             ColumnasCanciones.COLUMNA_DURACION + ", " +
             ColumnasCanciones.COLUMNA_GENERO + ", " +
             ColumnasCanciones.COLUMNA_IMAGE_URL + ", " +

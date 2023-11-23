@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
         <activity android:name=".Entities.MainActivity"
-            tools:ignore="Instantiatable,MissingClass">
-            tools:ignore="MissingClass"
+            tools:ignore="Instantiatable,MissingClass"
             android:exported="true">
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

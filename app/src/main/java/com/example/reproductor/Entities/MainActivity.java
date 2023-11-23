@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 if ((edContraseñaUp.getText() == null) || (edNombreUp.getText() == null) || (edApellidos.getText() == null) || (edCorreoUp.getText() == null)) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
-                } else {
-                    //Creamos un usuario nuevo con sus credenciales
+                }
+                else {
                     Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                     database.addUsuario(db, registro);
                     intent = new Intent(MainActivity.this, MainPage.class);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
-import com.example.reproductor.CancionAdapter;
+import com.example.reproductor.MainPage.CancionAdapter;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
@@ -26,13 +27,15 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView txvSignIn;
     private EditText editTextBuscar;
     private Button btnBuscar;
     private RecyclerView recyclerViewCanciones;
     private CancionAdapter cancionAdapter;
     private ApiManager apiManager;
-    private Button btnSignUp;
-    private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp;
+    private Button btnSignUp, btnSignIn;
+    private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp,
+                     edCorreoIn, edContraseñaIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,23 +51,39 @@ public class MainActivity extends AppCompatActivity {
         edContraseñaUp = findViewById(R.id.edtContraseñaUp);    //EditText de la contraseña (Registro)
         btnSignUp = findViewById(R.id.btnSingUp);
 
+        txvSignIn = findViewById(R.id.txvSignIn);
+        btnSignIn = findViewById(R.id.btnSingIn);
+
         //Método pa cuando pulse el botón de registro
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent;
                 //Comprobamos que ninguno de los campos estén vacíos
-                if ((edContraseñaUp.getText() == null) || (edNombreUp.getText() == null) || (edApellidos.getText() == null) || (edCorreoUp.getText() == null)) {
+                if ((edContraseñaUp.getText().toString().trim().isEmpty()) || (edNombreUp.getText().toString().trim().isEmpty()) || (edApellidos.getText().toString().trim().isEmpty()) || (edCorreoUp.getText().toString().trim().isEmpty())) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
                 else {
-                    Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
-                    database.addUsuario(db, registro);
-                    intent = new Intent(MainActivity.this, MainPage.class);
-                    intent.putExtra("usuario", registro);
-                    startActivity(intent);
+
+                    if ((!database.existeUsuarioContraseña(edContraseñaUp.getText().toString())) && (!database.existeUsuarioCorreo(edCorreoUp.getText().toString())))
+                    {
+                        Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
+                        database.addUsuario(db, registro);
+                        intent = new Intent(MainActivity.this, MainPage.class);
+                        intent.putExtra("usuario", registro);
+                        startActivity(intent);
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(), "Ya existe un usuario con esas credenciales", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
+            }
+        });
+
+        txvSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setContentView(R.layout.singin);
             }
         });
     }
@@ -75,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse apiResponse = response.body();
-                    List<String> nombresCanciones = apiManager.obtenerNombresCanciones(apiResponse);
+                    List<Canciones> nombresCanciones = apiManager.obtenerCanciones(apiResponse);
                     actualizarListaCanciones(nombresCanciones);
                 } else {
                     // Manejar la respuesta de error de la API
@@ -91,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void actualizarListaCanciones(List<String> nombresCanciones) {
+    private void actualizarListaCanciones(List<Canciones> nombresCanciones) {
         // Limpiar la lista actual de canciones y agregar las nuevas
         cancionAdapter.setListaCanciones(nombresCanciones);
         cancionAdapter.notifyDataSetChanged();

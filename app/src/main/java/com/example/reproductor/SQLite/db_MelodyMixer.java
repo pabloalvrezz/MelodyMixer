@@ -1,5 +1,6 @@
 package com.example.reproductor.SQLite;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
@@ -105,6 +106,51 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         db.insert(tabla_PLAYLIST_CANCION.TABLE_NAME, null, values);
     }
+
+    public boolean existeUsuarioCorreo(String correo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Especifica la tabla y las columnas que deseas consultar
+        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID};
+
+        // Especifica la cláusula WHERE para buscar el correo específico
+        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + " = ?";
+        String[] argumentos = {correo};
+
+        // Realiza la consulta
+        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
+
+        // Verifica si se devolvieron filas
+        boolean existeUsuario = cursor.getCount() > 0;
+
+        // Cierra el cursor y la base de datos
+        cursor.close();
+        db.close();
+        return existeUsuario;
+    }
+
+    public boolean existeUsuarioContraseña(String contraseña) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Especifica la tabla y las columnas que deseas consultar
+        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA};
+
+        // Especifica la cláusula WHERE para buscar el correo específico
+        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA + " = ?";
+        String[] argumentos = {contraseña};
+
+        // Realiza la consulta
+        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
+
+        // Verifica si se devolvieron filas
+        boolean existeUsuario = cursor.getCount() > 0;
+
+        // Cierra el cursor y la base de datos
+        cursor.close();
+        db.close();
+        return existeUsuario;
+    }
+
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {

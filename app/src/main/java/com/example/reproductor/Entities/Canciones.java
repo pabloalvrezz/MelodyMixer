@@ -15,9 +15,11 @@ public class Canciones {
     //Atributos
     private long id;
     private String nombre;
-    private Artistas artista;
+    private String artistaNombre;
     private int duracion;
     private String genero;
     private String linkImage;
+    private String linkPreview;
+
 
 }

@@ -13,15 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.API.ApiResponse;
-import com.example.reproductor.CancionAdapter;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,13 +27,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+=======
+>>>>>>> c07fc7f059b422daa0c601da61a4960b040245d6
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextBuscar;
     private Button btnBuscar;
-    private RecyclerView recyclerViewCanciones;
-    private CancionAdapter cancionAdapter;
-    private ApiManager apiManager;
     private Button btnSignUp;
     private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp;
 
@@ -78,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
     private void realizarBusqueda(String busqueda) {
         apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
             @Override
@@ -131,4 +128,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+=======
+>>>>>>> c07fc7f059b422daa0c601da61a4960b040245d6
 }

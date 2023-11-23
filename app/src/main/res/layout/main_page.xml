@@ -9,6 +9,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +22,40 @@
             android:layout_height="67dp"
             android:background="@color/fondo_claro" />
     </com.google.android.material.appbar.AppBarLayout>
+=======
+        android:background="@color/fondo_claro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTituloMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/melodymixer"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tlbMenu"
+        app:layout_constraintTop_toTopOf="@+id/tlbMenu" />
+
+    <TextView
+        android:id="@+id/txtSaludo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/good_morning"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/tlbMenu"
+        app:layout_constraintTop_toBottomOf="@+id/txtTituloMain" />
+>>>>>>> c07fc7f059b422daa0c601da61a4960b040245d6
 
     <TextView
         android:id="@+id/txtRecomendados"
@@ -80,6 +115,7 @@
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="220dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
@@ -91,6 +127,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/txtRecomendados" />
+=======
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        tools:listitem="@layout/listas_horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTusPlaylists" />
+
+    <ImageButton
+        android:id="@+id/imbBuscador"
+        android:layout_width="35dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:backgroundTint="@color/transparente"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/txtRecomendados"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlbMenu"
+        app:srcCompat="@drawable/lupa" />
+>>>>>>> c07fc7f059b422daa0c601da61a4960b040245d6
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,9 @@ package com.example.reproductor.SQLite;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.reproductor.Entities.Canciones;
+import com.example.reproductor.Entities.PlayList;
+
 public class tabla_PLAYLIST_CANCION {
 
     //Variables por defecto

@@ -6,13 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/imgSongBuscador"
+        android:layout_width="93dp"
+        android:layout_height="94dp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/cargando_cancion_image" />
+
     <TextView
-        android:id="@+id/textViewNombreCancion"
+        android:id="@+id/txtSongGenre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Nombre de la Canción"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgSongBuscador" />
+
+    <TextView
+        android:id="@+id/txtSongNameBuscador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/imgSongBuscador"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imbTresPuntos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/transparente"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toEndOf="@+id/txtSongGenre"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tres_puntitos" />
 </androidx.constraintlayout.widget.ConstraintLayout>

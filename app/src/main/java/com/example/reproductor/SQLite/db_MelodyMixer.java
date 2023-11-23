@@ -27,7 +27,8 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         //Se le meten datos
         db.execSQL(tabla_USUARIOS.INSERTA_DEFECTO);
         db.execSQL(tabla_ARTISTAS.INSERTA_DEFECTO);
-        db.execSQL(tabla_CANCIONES.INSERTA_DEFECTO);
+        db.execSQL(tabla_CANCIONES.INSERTA_CANCION1);
+        db.execSQL(tabla_CANCIONES.INSERTA_CANCION2);
         db.execSQL(tabla_PLAYLIST.INSERTA_DEFECTO);
         db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_DEFECTO);
     }

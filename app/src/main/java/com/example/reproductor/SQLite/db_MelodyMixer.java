@@ -82,7 +82,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ID, cancion.getId());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_TITULO, cancion.getNombre());
-        values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ARTISTA_ID, cancion.getArtista().getId());
+        values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_ARTISTA_NOMBRE, cancion.getArtistaNombre());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_DURACION, cancion.getDuracion());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_GENERO, cancion.getGenero());
         values.put(tabla_CANCIONES.ColumnasCanciones.COLUMNA_IMAGE_URL, cancion.getLinkImage());

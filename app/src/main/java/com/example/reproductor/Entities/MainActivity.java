@@ -9,28 +9,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.API.ApiResponse;
-import com.example.reproductor.CancionAdapter;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextBuscar;
     private Button btnBuscar;
-    private RecyclerView recyclerViewCanciones;
-    private CancionAdapter cancionAdapter;
-    private ApiManager apiManager;
     private Button btnSignUp;
     private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp;
 
@@ -57,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                 if ((edContraseñaUp.getText() == null) || (edNombreUp.getText() == null) || (edApellidos.getText() == null) || (edCorreoUp.getText() == null)) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
-                }
-                else {
+                } else {
+                    //Creamos un usuario nuevo con sus credenciales
                     Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                     database.addUsuario(db, registro);
                     intent = new Intent(MainActivity.this, MainPage.class);
@@ -69,31 +56,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void realizarBusqueda(String busqueda) {
-        apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = response.body();
-                    List<String> nombresCanciones = apiManager.obtenerNombresCanciones(apiResponse);
-                    actualizarListaCanciones(nombresCanciones);
-                } else {
-                    // Manejar la respuesta de error de la API
-                    Toast.makeText(MainActivity.this, "Error al buscar canciones", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Manejar el fallo de la solicitud
-                Toast.makeText(MainActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void actualizarListaCanciones(List<String> nombresCanciones) {
-        // Limpiar la lista actual de canciones y agregar las nuevas
-        cancionAdapter.setListaCanciones(nombresCanciones);
-        cancionAdapter.notifyDataSetChanged();
-    }
 }

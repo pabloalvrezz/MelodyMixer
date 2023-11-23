@@ -1,5 +1,7 @@
 package com.example.reproductor.API;
 
+import com.example.reproductor.Entities.Canciones;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,22 +38,23 @@ public class ApiManager {
     }
 
     // Método para procesar la respuesta de la API y obtener los nombres de las canciones
-    public List<String> obtenerNombresCanciones(ApiResponse apiResponse) {
-        List<String> nombresCanciones = new ArrayList<>();
-
+    public List<Canciones> obtenerCanciones(ApiResponse apiResponse) {
+        List<Canciones> canciones = new ArrayList<>();
+        Canciones cancion;
         // Verificar si la respuesta tiene resultados
         if (apiResponse != null && apiResponse.getResults() != null) {
             List<ResultadosDeApi> resultados = apiResponse.getResults();
 
             // Iterar sobre la lista de resultados y extraer los nombres de las canciones
             for (ResultadosDeApi resultado : resultados) {
-                // Verificar si el resultado tiene el nombre de la canción
-                if (resultado.getTrackName() != null) {
-                    nombresCanciones.add(resultado.getTrackName());
+                // Verificar si el resultado es distinto de nulo
+                if (resultado != null) {
+                    cancion = new Canciones(resultado.getTrackId(), resultado.getTrackName() ,resultado.getArtistName(), resultado.getTrackTimeMillis(), resultado.getPrimaryGenreName(), resultado.getArtworkUrl100(), resultado.getPreviewUrl());
+                    canciones.add(cancion);
                 }
             }
         }
 
-        return nombresCanciones;
+        return canciones;
     }
 }

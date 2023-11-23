@@ -26,6 +26,8 @@ public class tabla_CANCIONES {
     public static final String INSERTA_DEFECTO =
             "insert into "+TABLE_NAME+" values(null, null, null, null, null)";
 
+
+
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;
 

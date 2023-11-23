@@ -50,16 +50,15 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.execSQL(tabla_PLAYLIST_CANCION.SQL_CREATE_TABLE);
     }
 
-    public void addUsuario(SQLiteDatabase db) {
+    public void addUsuario(SQLiteDatabase db, Usuarios usuario) {
 
-        db.execSQL(tabla_USUARIOS.INSERTA_DEFECTO);
 
-        /*ContentValues values = new ContentValues();
-        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID, user.getId());
-        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_USUARIO, user.getUsuario());
-        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_APELLIDOS, user.getApellidos());
-        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA, user.getContraseña());
+        ContentValues values = new ContentValues();
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID, usuario.getCorreo());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_USUARIO, usuario.getUsuario());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_APELLIDOS, usuario.getApellidos());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA, usuario.getContraseña());
 
-        db.insert(tabla_USUARIOS.TABLE_NAME, null, values);*/
+        db.insert(tabla_USUARIOS.TABLE_NAME, null, values);
     }
 }

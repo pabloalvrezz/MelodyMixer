@@ -20,16 +20,16 @@
         app:layout_constraintVertical_bias="0.512" />
 
     <EditText
-        android:id="@+id/edtContraseña"
+        android:id="@+id/edtContraseñaUp"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682" />
+        app:layout_constraintVertical_bias="0.675" />
 
     <TextView
         android:id="@+id/txvPassword"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.617" />
 
     <EditText
-        android:id="@+id/edtUsuario4"
+        android:id="@+id/edtApellidos"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="false"
@@ -82,7 +82,7 @@
         android:layout_width="312dp"
         android:layout_height="57dp"
         android:backgroundTint="@color/boton_oscuro"
-        android:text="Sign Up"
+        android:text="Regístrame"
         app:iconTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
         app:layout_constraintVertical_bias="0.78" />
 
     <EditText
-        android:id="@+id/edtUsuario"
+        android:id="@+id/edtCorreoUp"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="false"
@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.34" />
 
     <EditText
-        android:id="@+id/edtUsuario3"
+        android:id="@+id/edtNombreUp"
         android:layout_width="310dp"
         android:layout_height="41dp"
         android:password="false"
@@ -132,7 +132,7 @@
         android:id="@+id/txvUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Usuario"
+        android:text="Correo"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,7 +145,7 @@
         android:id="@+id/txvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="Registrarse"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -161,7 +161,7 @@
         android:id="@+id/txvSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Inicio sesión"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"

@@ -45,17 +45,26 @@ public class BuscadorCanciones extends AppCompatActivity {
         btnBuscarCancion = findViewById(R.id.btnBuscarCancion);
         srvBuscadorCanciones = findViewById(R.id.srvBuscadorCanciones);
 
-        btnBuscarCancion.setOnClickListener(new View.OnClickListener() {
+        // Configurar el listener para el evento de submit (cuando se presiona "Enter")
+        srvBuscadorCanciones.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View view) {
-                String busqueda = srvBuscadorCanciones.getQuery().toString();
-                if (!busqueda.isEmpty()) {
-                    realizarBusqueda(busqueda);
+            public boolean onQueryTextSubmit(String query) {
+                if (!query.isEmpty()) {
+                    realizarBusqueda(query);
                 } else {
                     Toast.makeText(BuscadorCanciones.this, "Ingrese un término de búsqueda", Toast.LENGTH_SHORT).show();
                 }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                realizarBusqueda(newText);
+
+                return true;
             }
         });
+
     }
 
     /*
@@ -88,6 +97,7 @@ public class BuscadorCanciones extends AppCompatActivity {
      */
     private void actualizarListaCanciones(List<Canciones> listaCanciones) {
         // Limpiar la lista actual de canciones y agregar las nuevas
+        listaCanciones.clear();
         cancionAdapter.setListaCanciones(listaCanciones);
     }
 }

@@ -88,31 +88,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void realizarBusqueda(String busqueda) {
-        apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = response.body();
-                    List<Canciones> nombresCanciones = apiManager.obtenerCanciones(apiResponse);
-                    actualizarListaCanciones(nombresCanciones);
-                } else {
-                    // Manejar la respuesta de error de la API
-                    Toast.makeText(MainActivity.this, "Error al buscar canciones", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Manejar el fallo de la solicitud
-                Toast.makeText(MainActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void actualizarListaCanciones(List<Canciones> nombresCanciones) {
-        // Limpiar la lista actual de canciones y agregar las nuevas
-        cancionAdapter.setListaCanciones(nombresCanciones);
-        cancionAdapter.notifyDataSetChanged();
-    }
+   
 }

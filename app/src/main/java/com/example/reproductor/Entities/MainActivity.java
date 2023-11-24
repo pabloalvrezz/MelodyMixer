@@ -84,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
         txvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(MainActivity.this, InicioSesion.class);
+                Intent intent = new Intent(MainActivity.this, InicioSesion.class);
                 startActivity(intent);
             }
         });

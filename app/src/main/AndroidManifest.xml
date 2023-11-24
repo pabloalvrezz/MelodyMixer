@@ -28,6 +28,7 @@
         <activity android:name=".MainPage.BuscadorCanciones">
 
         </activity>
+        <activity android:name=".MainPage.InicioSesion"></activity>
     </application>
 
 </manifest>

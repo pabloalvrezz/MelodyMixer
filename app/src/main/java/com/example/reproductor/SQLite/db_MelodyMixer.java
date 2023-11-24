@@ -126,7 +126,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-        db.close();
         return existeUsuario;
     }
 
@@ -148,7 +147,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-        db.close();
         return existeUsuario;
     }
 

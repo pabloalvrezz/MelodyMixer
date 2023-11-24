@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.MainPage.CancionAdapter;
+import com.example.reproductor.MainPage.InicioSesion;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnSingUp);
 
         txvSignIn = findViewById(R.id.txvSignIn);
-        btnSignIn = findViewById(R.id.btnSingIn);
+
 
         //Método pa cuando pulse el botón de registro
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
         txvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.singin);
+                Intent intent;
+                intent = new Intent(MainActivity.this, InicioSesion.class);
+                startActivity(intent);
             }
         });
     }

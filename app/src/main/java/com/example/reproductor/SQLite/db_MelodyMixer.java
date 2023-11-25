@@ -1,5 +1,7 @@
 package com.example.reproductor.SQLite;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
@@ -105,6 +107,96 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         db.insert(tabla_PLAYLIST_CANCION.TABLE_NAME, null, values);
     }
+
+    public boolean existeUsuarioCorreo(String correo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Especifica la tabla y las columnas que deseas consultar
+        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID};
+
+        // Especifica la cláusula WHERE para buscar el correo específico
+        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + " = ?";
+        String[] argumentos = {correo};
+
+        // Realiza la consulta
+        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
+
+        // Verifica si se devolvieron filas
+        boolean existeUsuario = cursor.getCount() > 0;
+
+        // Cierra el cursor y la base de datos
+        cursor.close();
+        return existeUsuario;
+    }
+
+    public boolean existeUsuarioContraseña(String contraseña) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Especifica la tabla y las columnas que deseas consultar
+        String[] columnas = {tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA};
+
+        // Especifica la cláusula WHERE para buscar el correo específico
+        String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA + " = ?";
+        String[] argumentos = {contraseña};
+
+        // Realiza la consulta
+        Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
+
+        // Verifica si se devolvieron filas
+        boolean existeUsuario = cursor.getCount() > 0;
+
+        // Cierra el cursor y la base de datos
+        cursor.close();
+        return existeUsuario;
+    }
+
+    //No se pa que sirve el Supress este (Pero da error si no)
+    public String obtenerNombrePorCorreo(String correo) {
+        int indexNombre = 0;
+        String nombre = "";
+        // Realiza la consulta
+        String consulta = "SELECT usuario FROM USUARIOS WHERE email = ?";
+        Cursor cursor = getReadableDatabase().rawQuery(consulta, new String[]{correo});
+        // Verifica si se obtuvo algún resultado
+        if (cursor.moveToFirst() && cursor != null) {
+            // Obtiene el nombre de la columna 'USUARIO'
+            indexNombre = cursor.getColumnIndex(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_USUARIO);
+        }
+        if (indexNombre >= 0) {
+            nombre = cursor.getString(indexNombre);
+        } else {
+            // Manejar el caso donde la columna no existe
+            nombre = "Columna no encontrada";
+        }
+        // Cierra el cursor después de usarlo
+        cursor.close();
+        // Devuelve el nombre o null si no se encontró
+        return nombre;
+    }
+
+    public String obtenerApellidosPorCorreo(String correo) {
+        int indexApellidos = 0;
+        String apellidos = "";
+        // Realiza la consulta
+        String consulta = "SELECT apellidos FROM USUARIOS WHERE email = ?";
+        Cursor cursor = getReadableDatabase().rawQuery(consulta, new String[]{correo});
+        // Verifica si se obtuvo algún resultado
+        if (cursor.moveToFirst()) {
+            // Obtiene los apellidos de la columna 'APELLIDOS'
+            indexApellidos = cursor.getColumnIndex(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_APELLIDOS);
+        }
+        if (indexApellidos >= 0) {
+            apellidos = cursor.getString(indexApellidos);
+        } else {
+            // Manejar el caso donde la columna no existe
+            apellidos = "Columna no encontrada";
+        }
+        // Cierra el cursor después de usarlo
+        cursor.close();
+        // Devuelve el nombre o null si no se encontró
+        return apellidos;
+    }
+
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {

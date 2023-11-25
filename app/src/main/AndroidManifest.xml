@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
+<<<<<<< HEAD
 
+=======
+>>>>>>> e777f1f (Layouts perfil y playlist)
         <activity android:name=".Entities.MainActivity"
             tools:ignore="Instantiatable,MissingClass"
             android:exported="true">
@@ -24,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainPage.MainPage">
+<<<<<<< HEAD
         </activity>
 
         <activity android:name=".MainPage.BuscadorCanciones"
@@ -55,6 +59,17 @@
 
         <!--falta las playlist, reproductor-->
         <activity android:name=".MainPage.InicioSesion"></activity>
+=======
+
+        </activity>
+        <activity android:name=".MainPage.BuscadorCanciones">
+
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+>>>>>>> e777f1f (Layouts perfil y playlist)
     </application>
 
 </manifest>

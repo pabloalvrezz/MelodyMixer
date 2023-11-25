@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
+
         <activity android:name=".Entities.MainActivity"
             tools:ignore="Instantiatable,MissingClass"
             android:exported="true">
@@ -23,11 +24,36 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainPage.MainPage">
-
         </activity>
-        <activity android:name=".MainPage.BuscadorCanciones">
 
+        <activity android:name=".MainPage.BuscadorCanciones"
+
+            android:parentActivityName=".MainPage.MainPage">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainPage.MainPage" />
         </activity>
+
+        <activity android:name=".Entities.AcercaDe"
+
+            android:parentActivityName=".MainPage.MainPage">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainPage.MainPage" />
+        </activity>
+
+        <activity android:name=".Entities.Perfil"
+
+            android:parentActivityName=".MainPage.MainPage">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainPage.MainPage" />
+        </activity>
+
+        <!--falta las playlist, reproductor-->
     </application>
 
 </manifest>

@@ -21,11 +21,6 @@
             android:layout_height="67dp"
             android:background="@color/fondo_claro" />
     </com.google.android.material.appbar.AppBarLayout>
-        android:background="@color/fondo_claro"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtSaludo"

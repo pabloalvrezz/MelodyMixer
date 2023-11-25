@@ -55,16 +55,13 @@
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones"
         app:layout_constraintVertical_bias="1.0" />
-=======
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones"
         app:layout_constraintVertical_bias="0.0" />
->>>>>>> d25f2fe6923901974fe205bc250b4755e004fbbb
 
 </androidx.constraintlayout.widget.ConstraintLayout>

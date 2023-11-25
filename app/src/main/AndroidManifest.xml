@@ -34,7 +34,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainPage.MainPage" />
         </activity>
-<<<<<<< HEAD
 
         <activity android:name=".Entities.AcercaDe"
 
@@ -55,9 +54,7 @@
         </activity>
 
         <!--falta las playlist, reproductor-->
-=======
         <activity android:name=".MainPage.InicioSesion"></activity>
->>>>>>> d25f2fe6923901974fe205bc250b4755e004fbbb
     </application>
 
 </manifest>

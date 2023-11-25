@@ -11,30 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-=======
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.MainPage.CancionAdapter;
 import com.example.reproductor.MainPage.InicioSesion;
->>>>>>> d25f2fe6923901974fe205bc250b4755e004fbbb
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
-<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-=======
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
->>>>>>> d25f2fe6923901974fe205bc250b4755e004fbbb
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ApiManager apiManager;
     private Button btnSignUp, btnSignIn;
     private EditText edNombreUp, edApellidos, edContraseñaUp, edCorreoUp,
-                     edCorreoIn, edContraseñaIn;
+            edCorreoIn, edContraseñaIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,18 +63,15 @@ public class MainActivity extends AppCompatActivity {
                 if ((edContraseñaUp.getText().toString().trim().isEmpty()) || (edNombreUp.getText().toString().trim().isEmpty()) || (edApellidos.getText().toString().trim().isEmpty()) || (edCorreoUp.getText().toString().trim().isEmpty())) {
 
                     Toast.makeText(getApplicationContext(), "Rellene todos los campos", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
-                }
-                else {
+                } else {
 
-                    if ((!database.existeUsuarioContraseña(edContraseñaUp.getText().toString())) && (!database.existeUsuarioCorreo(edCorreoUp.getText().toString())))
-                    {
+                    if ((!database.existeUsuarioContraseña(edContraseñaUp.getText().toString())) && (!database.existeUsuarioCorreo(edCorreoUp.getText().toString()))) {
                         Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                         database.addUsuario(db, registro);
                         intent = new Intent(MainActivity.this, MainPage.class);
                         intent.putExtra("usuario", registro);
                         startActivity(intent);
-                    }
-                    else
+                    } else
                         Toast.makeText(getApplicationContext(), "Ya existe un usuario con esas credenciales", Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
             }
@@ -103,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_paginaprincipal, menu);
@@ -111,10 +93,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.Perfil:
                 Intent perfil = new Intent(this, Perfil.class);
                 startActivity(perfil);
@@ -128,33 +109,5 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
-=======
-    private void realizarBusqueda(String busqueda) {
-        apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = response.body();
-                    List<Canciones> nombresCanciones = apiManager.obtenerCanciones(apiResponse);
-                    actualizarListaCanciones(nombresCanciones);
-                } else {
-                    // Manejar la respuesta de error de la API
-                    Toast.makeText(MainActivity.this, "Error al buscar canciones", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Manejar el fallo de la solicitud
-                Toast.makeText(MainActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void actualizarListaCanciones(List<Canciones> nombresCanciones) {
-        // Limpiar la lista actual de canciones y agregar las nuevas
-        cancionAdapter.setListaCanciones(nombresCanciones);
-        cancionAdapter.notifyDataSetChanged();
->>>>>>> d25f2fe6923901974fe205bc250b4755e004fbbb
     }
 }

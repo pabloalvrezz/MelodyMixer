@@ -1,5 +1,6 @@
 package com.example.reproductor.SQLite;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -223,6 +224,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
      * Metodo que usaremos para recuperar todas las listas
      * asociadas al usuario actual de la aplicacion
      */
+    @SuppressLint("Range")
     public List<PlayList> recuperarListasUsuario(Usuarios usuarioActual) {
         SQLiteDatabase db = this.getReadableDatabase(); // obtenemos la base de datos actual
         String consulta = "SELECT * FROM PLAYLIST WHERE usuario = ?";
@@ -238,21 +240,22 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         // verificamos si se obtuvo resultados
         while (cursor.moveToNext()) {
             // Obtén los datos de cada fila y crea un objeto Playlist
-            idPlaylist = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID);
-            nombrePlaylistIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE);
+            idPlaylist = cursor.getColumnIndex(String.valueOf(cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID)));
+            nombrePlaylistIndex = cursor.getColumnIndex(String.valueOf(cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE)));
 
             // en caso de que haya playlists las agregamos a la lista
-            if (nombrePlaylistIndex > -1) {
+            if (nombrePlaylistIndex > 0) {
                 nombrePlaylist = cursor.getString(nombrePlaylistIndex);
                 playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo());
 
                 playlists.add(playList);
             }
-            // Crea un objeto Playlist y agrégalo a la lista
 
         }
+
         // Cierra el cursor después de usarlo
         cursor.close();
+
         return playlists;
     }
 

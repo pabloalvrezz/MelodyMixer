@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.Entities.Canciones;
@@ -121,6 +122,12 @@ public class BuscadorCanciones extends AppCompatActivity {
         prgLoader.setVisibility(View.INVISIBLE);
 
     }
+
+    private void animation(LottieAnimationView animationView, int animacion){
+        animationView.setAnimation(animacion);
+        animationView.playAnimation();
+    }
+
     /*
      * Método que usaremos para realizar la búsqueda de las canciones en la API
      */

@@ -27,8 +27,13 @@ public class tabla_PLAYLIST_CANCION {
                     "FOREIGN KEY(" + ColumnasPlayCanciones.COLUMNA_ID_CANCION + ") REFERENCES " + tabla_CANCIONES.TABLE_NAME + "(" + tabla_CANCIONES.ColumnasCanciones.COLUMNA_ID + "))";
 
     //Insertamos valores por defecto
-    public static final String INSERTA_DEFECTO =
-            "insert into "+TABLE_NAME+" values(null, null)";
+    public static final String INSERTA_POP =
+            "insert into "+TABLE_NAME+" values(2, 390992640)";
+
+    public static final String INSERTA_POP_2 =
+            "insert into "+TABLE_NAME+" values(2, 878000348)";
+
+
 
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;

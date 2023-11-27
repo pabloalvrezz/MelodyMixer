@@ -66,8 +66,17 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
                     if ((!database.existeUsuarioContraseña(edContraseñaUp.getText().toString())) && (!database.existeUsuarioCorreo(edCorreoUp.getText().toString()))) {
+                        /*
+                            Creamos el usuario
+                        */
                         Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                         database.addUsuario(db, registro);
+                        /*
+                            Creamos las PlayList 'Favoritos'
+                        */
+                        PlayList listaFav = new PlayList(1, "Favoritos", registro);
+                        database.addPlaylist(db, listaFav);
+                        
                         intent = new Intent(MainActivity.this, MainPage.class);
                         intent.putExtra("usuario", registro);
                         startActivity(intent);

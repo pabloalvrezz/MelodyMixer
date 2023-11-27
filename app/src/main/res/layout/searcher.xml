@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:backgroundTintMode="add">
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ProgressBar
         android:id="@+id/prgbLoader"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
         android:layout_width="wrap_content"

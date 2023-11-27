@@ -69,6 +69,17 @@ public class MainPage extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int horaDelDia = calendar.get(Calendar.HOUR_OF_DAY);
 
+        if(horaDelDia > 6 && horaDelDia <= 12){
+            this.txtSaludo.setText("Buenos días, " + usuarioActual.getUsuario());
+        }
+        else{
+            if(horaDelDia > 12 && horaDelDia <= 20){
+                this.txtSaludo.setText("Buenas tardes, " + usuarioActual.getUsuario());
+            }
+            else{
+                this.txtSaludo.setText("Buenas noches, " + usuarioActual.getUsuario());
+            }
+        }
 
     }
 

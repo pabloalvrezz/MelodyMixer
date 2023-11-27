@@ -1,8 +1,5 @@
 package com.example.reproductor.SQLite;
-<<<<<<< HEAD
 import android.annotation.SuppressLint;
-=======
->>>>>>> e777f1f (Layouts perfil y playlist)
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -129,10 +126,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-<<<<<<< HEAD
-=======
-        db.close();
->>>>>>> e777f1f (Layouts perfil y playlist)
         return existeUsuario;
     }
 
@@ -154,7 +147,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-<<<<<<< HEAD
         return existeUsuario;
     }
 
@@ -205,12 +197,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return apellidos;
     }
 
-=======
-        db.close();
-        return existeUsuario;
-    }
-
->>>>>>> e777f1f (Layouts perfil y playlist)
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {

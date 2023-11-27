@@ -13,18 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.MainPage.CancionAdapter;
-import com.example.reproductor.MainPage.InicioSesion;
+import com.example.reproductor.Loggin.InicioSesion;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 

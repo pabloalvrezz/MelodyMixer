@@ -59,7 +59,6 @@ public class BuscadorCanciones extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                realizarBusqueda(newText);
 
                 return true;
             }

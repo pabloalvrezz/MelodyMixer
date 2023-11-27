@@ -63,7 +63,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     //Método para añadir fila a USUARIOS
     public void addUsuario(SQLiteDatabase db, Usuarios usuario) {
         ContentValues values = new ContentValues();
-        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID, usuario.getCorreo());
+        values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID, usuario.getEmail());
         values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_USUARIO, usuario.getUsuario());
         values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_APELLIDOS, usuario.getApellidos());
         values.put(tabla_USUARIOS.ColumnasUsuarios.COLUMNA_CONTRASEÑA, usuario.getContraseña());
@@ -75,7 +75,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID, playList.getId());
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE, playList.getNombre());
-        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO, playList.getUsuario().getCorreo());
+        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO, playList.getUsuario().getEmail());
 
         db.insert(tabla_PLAYLIST.TABLE_NAME, null, values);
     }
@@ -108,7 +108,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.insert(tabla_PLAYLIST_CANCION.TABLE_NAME, null, values);
     }
 
-    public boolean existeUsuarioCorreo(String correo) {
+    public boolean existeUsuarioCorreo(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Especifica la tabla y las columnas que deseas consultar
@@ -116,7 +116,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Especifica la cláusula WHERE para buscar el correo específico
         String seleccion = tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + " = ?";
-        String[] argumentos = {correo};
+        String[] argumentos = {email};
 
         // Realiza la consulta
         Cursor cursor = db.query(tabla_USUARIOS.TABLE_NAME, columnas, seleccion, argumentos, null, null, null);
@@ -126,7 +126,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-        db.close();
         return existeUsuario;
     }
 
@@ -148,7 +147,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         // Cierra el cursor y la base de datos
         cursor.close();
-        db.close();
         return existeUsuario;
     }
 

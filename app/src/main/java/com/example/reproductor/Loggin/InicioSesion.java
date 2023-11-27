@@ -1,4 +1,4 @@
-package com.example.reproductor.MainPage;
+package com.example.reproductor.Loggin;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.reproductor.Entities.MainActivity;
 import com.example.reproductor.Entities.Usuarios;
+import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 

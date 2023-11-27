@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Usuarios implements Serializable {
-    private String correo;
+    private String email;
     private String usuario;
     private String apellidos;
     private String contraseña;

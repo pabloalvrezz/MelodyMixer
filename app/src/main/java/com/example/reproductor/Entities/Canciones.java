@@ -1,6 +1,8 @@
 package com.example.reproductor.Entities;
 
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Canciones {
+public class Canciones implements Serializable {
 
     //Atributos
     private long id;

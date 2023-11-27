@@ -19,15 +19,32 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHolder> {
 
     private List<Canciones> listaCanciones;
     private Context context;
+    private OnItemClickListener listener;
 
     // Constructor
     public CancionAdapter(Context context, List<Canciones> listaCanciones) {
         this.context = context;
         this.listaCanciones = listaCanciones;
+    }
+
+    // Interfaz para el escuchador de clics
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    // Método para establecer el escuchador
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -41,7 +58,6 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Canciones currentCancion = listaCanciones.get(position);
 
-
         // Configurar las vistas con datos desde la lista de canciones
         holder.txtSongNameBuscador.setText(currentCancion.getNombre() != null ? currentCancion.getNombre() : "<Sin Nombre>");
         holder.txtArtistNameBuscador.setText(currentCancion.getArtistaNombre() != null ? currentCancion.getArtistaNombre() : "<Sin Artista>");
@@ -49,10 +65,20 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
         // Obtener la URL de la imagen de la canción
         String imageUrl = currentCancion.getLinkImage();
 
-        // Usar Glide para cargar la imagen en la ImageView
+        // Cargamos la imagen de cada cancion
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.imgSongBuscador);
+
+        // Configurar el clic en el ViewHolder
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
+            }
+        });
     }
 
     @Override

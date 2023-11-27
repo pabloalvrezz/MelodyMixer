@@ -9,5 +9,5 @@ public interface ApiService {
 
     // Método para buscar una canción por término en la API de iTunes
     @GET("search")
-    Call<ApiResponse> buscarCancion(@Query("term") String term);
+    Call<ApiResponse> buscarCancion(@Query("term") String term, @Query("media")String media);
 }

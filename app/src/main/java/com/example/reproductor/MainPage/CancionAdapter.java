@@ -7,15 +7,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD
+=======
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+>>>>>>> e777f1f (Layouts perfil y playlist)
 import com.bumptech.glide.Glide;
 import com.example.reproductor.Entities.Canciones;
 import com.example.reproductor.R;
 
 import java.util.List;
 
+<<<<<<< HEAD
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+=======
+>>>>>>> e777f1f (Layouts perfil y playlist)
 public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHolder> {
 
     private List<Canciones> listaCanciones;

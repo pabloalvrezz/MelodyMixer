@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         */
                         PlayList listaFav = new PlayList(1, "Favoritos", registro);
                         database.addPlaylist(db, listaFav);
-                        
+
                         intent = new Intent(MainActivity.this, MainPage.class);
                         intent.putExtra("usuario", registro);
                         startActivity(intent);

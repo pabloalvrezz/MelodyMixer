@@ -18,7 +18,11 @@
     <TextView
         android:id="@+id/txtSongGenre"
         android:layout_width="299dp"
+<<<<<<< HEAD
         android:layout_height="17dp"
+=======
+        android:layout_height="wrap_content"
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         android:layout_marginStart="8dp"
         android:layout_marginBottom="36dp"
         android:layout_weight="1"
@@ -29,7 +33,11 @@
     <TextView
         android:id="@+id/txtSongNameBuscador"
         android:layout_width="299dp"
+<<<<<<< HEAD
         android:layout_height="19dp"
+=======
+        android:layout_height="wrap_content"
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_weight="1"

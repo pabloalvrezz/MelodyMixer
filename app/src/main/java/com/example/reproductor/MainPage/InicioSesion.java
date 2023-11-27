@@ -46,7 +46,10 @@ public class InicioSesion extends AppCompatActivity {
                 else
                 {
                     Usuarios registro = new Usuarios(edCorreoIn.getText().toString(), database.obtenerNombrePorCorreo(edCorreoIn.getText().toString()),database.obtenerApellidosPorCorreo(edCorreoIn.getText().toString()),edContraseñaIn.getText().toString());
+<<<<<<< HEAD
                     database.addUsuario(db, registro);
+=======
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
                     intent = new Intent(InicioSesion.this, MainPage.class);
                     intent.putExtra("usuario", registro);
                     startActivity(intent);

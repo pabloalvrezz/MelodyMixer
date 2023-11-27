@@ -47,7 +47,11 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+<<<<<<< HEAD
             textViewNombreCancion = itemView.findViewById(R.id.txvNombreCancion);
+=======
+            textViewNombreCancion = itemView.findViewById(R.id.textViewNombreCancion);
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         }
     }
 }

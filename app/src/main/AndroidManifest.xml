@@ -8,7 +8,11 @@
         android:allowBackup="true"
         android:icon="@drawable/logomelodymixer"
         android:label="@string/app_name"
+<<<<<<< HEAD
         android:roundIcon="@mipmap/ic_launcher_round"
+=======
+        android:roundIcon="@drawable/logomelodymixer"
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         android:supportsRtl="true"
         android:theme="@style/Theme.Reproductor">
 
@@ -25,7 +29,11 @@
         <activity android:name=".MainPage.MainPage" />
 
         <activity
+<<<<<<< HEAD
             android:name=".MainPage.BuscadorCanciones"
+=======
+            android:name=".Buscador.BuscadorCanciones"
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
             android:parentActivityName=".MainPage.MainPage">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

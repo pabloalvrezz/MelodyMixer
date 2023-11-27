@@ -32,6 +32,11 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
+<<<<<<< HEAD
+=======
+    implementation 'com.airbnb.android:lottie:3.4.2'
+
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 

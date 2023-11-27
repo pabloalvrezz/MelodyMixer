@@ -21,7 +21,14 @@ public class tabla_PLAYLIST {
 
     //Insertamos valores por defecto
     public static final String INSERTA_DEFECTO =
+<<<<<<< HEAD
             "insert into "+TABLE_NAME+" values(null, 'Favoritos', null)";
+=======
+            "insert into "+TABLE_NAME+" values(2, 'POP', null)";
+
+    public static final String INSERTA_DEFECTO_2 =
+            "insert into "+TABLE_NAME+" values(3, 'ROCK', null)";
+>>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
 
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;

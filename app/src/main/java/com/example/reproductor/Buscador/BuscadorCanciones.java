@@ -1,17 +1,14 @@
-package com.example.reproductor.MainPage;
+package com.example.reproductor.Buscador;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -40,6 +37,7 @@ public class BuscadorCanciones extends AppCompatActivity {
     private SearchView srvBuscadorCanciones;
     private TextView txtResultados;
     private List<Canciones> listaCanciones;
+    private ProgressBar prgLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +55,14 @@ public class BuscadorCanciones extends AppCompatActivity {
 
         txtResultados = (TextView) findViewById(R.id.txtResultadosCanciones);
         srvBuscadorCanciones = findViewById(R.id.srvBuscadorCanciones);
+
+        // establecemos la query del buscador
         srvBuscadorCanciones.setQueryHint("Buscar canciones");
 
+        // establecemos que se muestre el teclado al inicio de la app
         srvBuscadorCanciones.setIconified(false);
+
+        prgLoader = (ProgressBar)findViewById(R.id.prgbLoader);
 
         // Animación: Trasladar Elemento de Arriba hacia Abajo
         TranslateAnimation an = new TranslateAnimation(0.0f,  0.0f, 1600.0f,  0.0f);
@@ -106,12 +109,11 @@ public class BuscadorCanciones extends AppCompatActivity {
                 intent.putExtra("cancionSeleccionada", cancionSeleccionada);
 
                 startActivity(intent, options.toBundle());
-
-                //startActivity(intent,
-                //      ActivityOptions.makeSceneTransitionAnimation(BuscadorCanciones.this).toBundle());
-
             }
         });
+
+        // ocultamos el loader
+        prgLoader.setVisibility(View.INVISIBLE);
 
     }
 
@@ -119,21 +121,37 @@ public class BuscadorCanciones extends AppCompatActivity {
      * Método que usaremos para realizar la búsqueda de las canciones en la API
      */
     private void realizarBusqueda(String busqueda) {
+        // mostramos el loader
+        prgLoader.setVisibility(View.VISIBLE);
+
         apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                ApiResponse apiResponse;
+
                 if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = response.body();
+                    // ocultamos el loader
+                    prgLoader.setVisibility(View.INVISIBLE);
+
+                    apiResponse = response.body();
+
+                    // obtenemos la lista de canciones y actualizamos los resultados
                     listaCanciones = apiManager.obtenerCanciones(apiResponse);
                     actualizarListaCanciones(listaCanciones);
+
+                    // decimos cuantos resultados se han encontrado
                     txtResultados.setText("Se han encontrado: " + listaCanciones.size() + " resultados");
                 } else {
+                    // ocultamos el loader
+                    prgLoader.setVisibility(View.INVISIBLE);
                     txtResultados.setText("No hay resultados");
                 }
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
+                // ocultamos el loader
+                prgLoader.setVisibility(View.INVISIBLE);
                 Toast.makeText(getApplicationContext(), "Ha ocurrido un error al realizar la búsqueda", Toast.LENGTH_SHORT).show();
             }
         });

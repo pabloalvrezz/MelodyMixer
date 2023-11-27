@@ -1,19 +1,17 @@
 package com.example.reproductor.MainPage;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.API.ApiResponse;
-import com.example.reproductor.Entities.Canciones;
+import com.example.reproductor.Buscador.BuscadorCanciones;
+import com.example.reproductor.Buscador.CancionAdapter;
 import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 
@@ -24,9 +22,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 @AllArgsConstructor
 @NoArgsConstructor

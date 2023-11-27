@@ -1,10 +1,12 @@
-package com.example.reproductor.MainPage;
+package com.example.reproductor.Buscador;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,10 +18,6 @@ import com.example.reproductor.R;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -77,6 +75,22 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
                 if (listener != null) {
                     listener.onItemClick(position);
                 }
+            }
+        });
+
+        // configuramos el escuchador para la pulsacion larga
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(context, view);
+                MenuInflater menuInflater = popupMenu.getMenuInflater();
+                PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context);
+
+                menuInflater.inflate(R.menu.pop_up, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(popUpMenuLongClick);
+
+                popupMenu.show();
+                return true;
             }
         });
     }

@@ -4,21 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cnlBuscador"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:backgroundTintMode="add">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/prgbLoader"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="add"
+        android:indeterminateTint="@color/fondo_oscuro"
+        android:progressTint="@color/fondo_oscuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
         android:id="@+id/srvBuscadorCanciones"
-        android:layout_width="375dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="410dp"
+        android:layout_height="66dp"
         android:layout_marginTop="16dp"
+        android:background="@color/fondo_claro"
+        android:backgroundTint="@color/fondo_claro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhResultadosBusqueda"
-        android:layout_width="375dp"
-        android:layout_height="600dp"
+        android:layout_width="371dp"
+        android:layout_height="671dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="11dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,19 +49,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones" />
 
-    <ProgressBar
-        android:id="@+id/prgbLoader"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="212dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="340dp"
-        android:progressTint="@color/fondo_claro"
-        app:layout_constraintBottom_toBottomOf="@+id/rvhResultadosBusqueda"
-        app:layout_constraintEnd_toEndOf="@+id/rvhResultadosBusqueda"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/rvhResultadosBusqueda"
-        app:layout_constraintTop_toTopOf="@+id/rvhResultadosBusqueda" />
 </androidx.constraintlayout.widget.ConstraintLayout>

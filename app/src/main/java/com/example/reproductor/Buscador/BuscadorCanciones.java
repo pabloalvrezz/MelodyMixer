@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -15,9 +16,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.Entities.Canciones;
+import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 import com.example.reproductor.Reproductor.Reproductor;
 
@@ -38,18 +41,22 @@ public class BuscadorCanciones extends AppCompatActivity {
     private TextView txtResultados;
     private List<Canciones> listaCanciones;
     private ProgressBar prgLoader;
+    private Usuarios usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searcher);
 
+        // recuperamos el usuario actual
+        usuarioActual = (Usuarios) this.getIntent().getSerializableExtra("usuarioActual");
+
         apiManager = new ApiManager();
 
         cnlBuscador = (ConstraintLayout)findViewById(R.id.cnlBuscador);
 
         recyclerViewSearchResults = findViewById(R.id.rvhResultadosBusqueda);
-        cancionAdapter = new CancionAdapter(this, new ArrayList<>());
+        cancionAdapter = new CancionAdapter(this, new ArrayList<>(), usuarioActual);
         recyclerViewSearchResults.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewSearchResults.setAdapter(cancionAdapter);
 
@@ -85,7 +92,6 @@ public class BuscadorCanciones extends AppCompatActivity {
                     actualizarListaCanciones(null);
 
                     txtResultados.setText("Resultados: ");
-
                 }
                 return true;
             }
@@ -115,6 +121,11 @@ public class BuscadorCanciones extends AppCompatActivity {
         // ocultamos el loader
         prgLoader.setVisibility(View.INVISIBLE);
 
+    }
+
+    private void animation(LottieAnimationView animationView, int animacion){
+        animationView.setAnimation(animacion);
+        animationView.playAnimation();
     }
 
     /*

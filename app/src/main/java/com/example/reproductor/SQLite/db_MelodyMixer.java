@@ -39,7 +39,8 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.execSQL(tabla_CANCIONES.INSERTA_CANCION1);
         db.execSQL(tabla_CANCIONES.INSERTA_CANCION2);
         db.execSQL(tabla_PLAYLIST.INSERTA_DEFECTO);
-        db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_DEFECTO);
+        db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_POP);
+        db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_POP_2);
     }
 
     //Para recrear las tablas
@@ -75,7 +76,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID, playList.getId());
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE, playList.getNombre());
-        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO, playList.getUsuario().getCorreo());
+        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO, playList.getUsuarioId());
 
         db.insert(tabla_PLAYLIST.TABLE_NAME, null, values);
     }

@@ -1,5 +1,6 @@
 package com.example.reproductor.MainPage;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -53,7 +54,13 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainPage.this, BuscadorCanciones.class);
+
+                // Configuramos las animaciones
+
                 startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                overridePendingTransition(0,0);
+
             }
         });
 
@@ -83,38 +90,5 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-    /*
-     * Metodo que usaremos para realizar la busqueda de las canciones
-     * en la API
-     */
-    private void realizarBusqueda(String busqueda) {
-        apiManager.buscarCancion(busqueda, new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ApiResponse apiResponse = response.body();
-                    List<Canciones> nombresCanciones = apiManager.obtenerCanciones(apiResponse);
-                    actualizarListaCanciones(nombresCanciones);
-                } else {
-                    // Manejar la respuesta de error de la API
-                    Toast.makeText(MainPage.this, "Error al buscar canciones", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Manejar el fallo de la solicitud
-                Toast.makeText(MainPage.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    /*
-     * Metodo que usaremos para actualizar la lista de canciones que busque el usuario
-     */
-    private void actualizarListaCanciones(List<Canciones> nombresCanciones) {
-        // Limpiar la lista actual de canciones y agregar las nuevas
-        cancionAdapter.setListaCanciones(nombresCanciones);
-        cancionAdapter.notifyDataSetChanged();
-    }
 }

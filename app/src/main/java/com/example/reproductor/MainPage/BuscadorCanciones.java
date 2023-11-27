@@ -1,10 +1,12 @@
 package com.example.reproductor.MainPage;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +33,7 @@ import retrofit2.Response;
 
 public class BuscadorCanciones extends AppCompatActivity {
 
+    private ConstraintLayout cnlBuscador;
     private RecyclerView recyclerViewSearchResults;
     private CancionAdapter cancionAdapter;
     private ApiManager apiManager;
@@ -44,13 +48,23 @@ public class BuscadorCanciones extends AppCompatActivity {
 
         apiManager = new ApiManager();
 
+        cnlBuscador = (ConstraintLayout)findViewById(R.id.cnlBuscador);
+
         recyclerViewSearchResults = findViewById(R.id.rvhResultadosBusqueda);
         cancionAdapter = new CancionAdapter(this, new ArrayList<>());
         recyclerViewSearchResults.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewSearchResults.setAdapter(cancionAdapter);
 
-        txtResultados = (TextView)findViewById(R.id.txtResultadosCanciones);
+        txtResultados = (TextView) findViewById(R.id.txtResultadosCanciones);
         srvBuscadorCanciones = findViewById(R.id.srvBuscadorCanciones);
+        srvBuscadorCanciones.setQueryHint("Buscar canciones");
+
+        srvBuscadorCanciones.setIconified(false);
+
+        // Animación: Trasladar Elemento de Arriba hacia Abajo
+        TranslateAnimation an = new TranslateAnimation(0.0f,  0.0f, 1600.0f,  0.0f);
+        an.setDuration(350);
+        cnlBuscador.startAnimation(an);
 
         // agregamos el escuchador para buscar en la api cuando pulse enter el usuario
         srvBuscadorCanciones.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -74,19 +88,31 @@ public class BuscadorCanciones extends AppCompatActivity {
             }
         });
 
-        // agregamos el escuchador para saber que cancion ha pulsado el usuario
+        // Dentro del método onItemClick
         cancionAdapter.setOnItemClickListener(new CancionAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
 
-                // Obtenemos la cancion elegida por el usuario
+                // Obtenemos la canción elegida por el usuario
                 Canciones cancionSeleccionada = listaCanciones.get(position);
 
                 Intent intent = new Intent(BuscadorCanciones.this, Reproductor.class);
+
+                // Configuramos las animaciones
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(
+                        BuscadorCanciones.this, R.anim.fade_in, R.anim.fade_out);
+
+                // Pasamos la cancion que ha seleccionado el usuario
                 intent.putExtra("cancionSeleccionada", cancionSeleccionada);
-                startActivity(intent);
+
+                startActivity(intent, options.toBundle());
+
+                //startActivity(intent,
+                //      ActivityOptions.makeSceneTransitionAnimation(BuscadorCanciones.this).toBundle());
+
             }
         });
+
     }
 
     /*

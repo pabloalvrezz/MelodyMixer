@@ -31,7 +31,7 @@ public class ApiManager {
     // Método para buscar una canción en la API de iTunes
     public void buscarCancion(String term, Callback<ApiResponse> callback) {
         // Crear una llamada a la API para buscar la canción por término
-        Call<ApiResponse> call = apiService.buscarCancion(term);
+        Call<ApiResponse> call = apiService.buscarCancion(term, "music");
 
         // Realizar la llamada de forma asíncrona y manejar la respuesta mediante el Callback
         call.enqueue(callback);

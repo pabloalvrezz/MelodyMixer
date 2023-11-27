@@ -1,11 +1,13 @@
 package com.example.reproductor.MainPage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -17,6 +19,7 @@ import com.example.reproductor.API.ApiManager;
 import com.example.reproductor.API.ApiResponse;
 import com.example.reproductor.Entities.Canciones;
 import com.example.reproductor.R;
+import com.example.reproductor.Reproductor.Reproductor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,8 @@ public class BuscadorCanciones extends AppCompatActivity {
     private CancionAdapter cancionAdapter;
     private ApiManager apiManager;
     private SearchView srvBuscadorCanciones;
-
+    private TextView txtResultados;
+    private List<Canciones> listaCanciones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,31 +49,44 @@ public class BuscadorCanciones extends AppCompatActivity {
         recyclerViewSearchResults.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewSearchResults.setAdapter(cancionAdapter);
 
-
+        txtResultados = (TextView)findViewById(R.id.txtResultadosCanciones);
         srvBuscadorCanciones = findViewById(R.id.srvBuscadorCanciones);
 
+        // agregamos el escuchador para buscar en la api cuando pulse enter el usuario
         srvBuscadorCanciones.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 realizarBusqueda(query);
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Este método se llama cuando cambia el texto en el SearchView
-                // Puedes agregar lógica aquí para filtrar la lista según el nuevo texto
-
                 // Si el nuevo texto está vacío, actualiza la lista a null
                 if (newText.isEmpty()) {
                     actualizarListaCanciones(null);
 
-                }
+                    txtResultados.setText("Resultados: ");
 
+                }
                 return true;
             }
         });
 
+        // agregamos el escuchador para saber que cancion ha pulsado el usuario
+        cancionAdapter.setOnItemClickListener(new CancionAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+                // Obtenemos la cancion elegida por el usuario
+                Canciones cancionSeleccionada = listaCanciones.get(position);
+
+                Intent intent = new Intent(BuscadorCanciones.this, Reproductor.class);
+                intent.putExtra("cancionSeleccionada", cancionSeleccionada);
+                startActivity(intent);
+            }
+        });
     }
 
     /*
@@ -81,18 +98,17 @@ public class BuscadorCanciones extends AppCompatActivity {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse apiResponse = response.body();
-                    List<Canciones> listaCanciones = apiManager.obtenerCanciones(apiResponse);
+                    listaCanciones = apiManager.obtenerCanciones(apiResponse);
                     actualizarListaCanciones(listaCanciones);
+                    txtResultados.setText("Se han encontrado: " + listaCanciones.size() + " resultados");
                 } else {
-                    // Manejar la respuesta de error de la API
-                    // Puedes mostrar un mensaje de error en un TextView o Toast
+                    txtResultados.setText("No hay resultados");
                 }
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Manejar el fallo de la solicitud
-                // Puedes mostrar un mensaje de error en un TextView o Toast
+                Toast.makeText(getApplicationContext(), "Ha ocurrido un error al realizar la búsqueda", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -101,7 +117,6 @@ public class BuscadorCanciones extends AppCompatActivity {
      * Método que usaremos para actualizar la lista de canciones que se muestra en el RecyclerView
      */
     private void actualizarListaCanciones(List<Canciones> listaCanciones) {
-        // Limpiar la lista actual de canciones y agregar las nuevas
         cancionAdapter.setListaCanciones(listaCanciones);
     }
 

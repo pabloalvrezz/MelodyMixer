@@ -26,8 +26,8 @@
 
     <SearchView
         android:id="@+id/srvBuscadorCanciones"
-        android:layout_width="375dp"
-        android:layout_height="62dp"
+        android:layout_width="389dp"
+        android:layout_height="57dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,22 +35,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvhResultadosBusqueda"
-        android:layout_width="385dp"
-        android:layout_height="736dp"
-        android:layout_marginStart="11dp"
+        android:layout_width="389dp"
+        android:layout_height="538dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones"
-        app:layout_constraintVertical_bias="0.0" /><![CDATA[
+        app:layout_constraintTop_toBottomOf="@+id/txtResultadosCanciones" />
 
-    app:layout_constraintHorizontal_bias="0.0"
+    <TextView
+        android:id="@+id/txtResultadosCanciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/resultados"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones"
-        app:layout_constraintVertical_bias="0.0" />
-
-]]>
+        app:layout_constraintTop_toBottomOf="@+id/srvBuscadorCanciones" />
 </androidx.constraintlayout.widget.ConstraintLayout>

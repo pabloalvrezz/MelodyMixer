@@ -224,7 +224,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
      * Metodo que usaremos para recuperar todas las listas
      * asociadas al usuario actual de la aplicacion
      */
-    @SuppressLint("Range")
     public List<PlayList> recuperarListasUsuario(Usuarios usuarioActual) {
         SQLiteDatabase db = this.getReadableDatabase(); // obtenemos la base de datos actual
         String consulta = "SELECT * FROM PLAYLIST WHERE usuario = ?";
@@ -250,7 +249,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
                 playlists.add(playList);
             }
-
         }
 
         // Cierra el cursor después de usarlo
@@ -258,7 +256,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         return playlists;
     }
-
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {

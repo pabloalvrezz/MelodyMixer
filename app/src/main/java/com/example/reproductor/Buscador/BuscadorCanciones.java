@@ -123,10 +123,6 @@ public class BuscadorCanciones extends AppCompatActivity {
 
     }
 
-    private void animation(LottieAnimationView animationView, int animacion){
-        animationView.setAnimation(animacion);
-        animationView.playAnimation();
-    }
 
     /*
      * Método que usaremos para realizar la búsqueda de las canciones en la API

@@ -13,9 +13,6 @@ import lombok.Setter;
 public class PlayList {
     private long id;
     private String nombre;
-<<<<<<< HEAD
-    private Usuarios usuario;
-=======
     private String usuarioId;
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
 }

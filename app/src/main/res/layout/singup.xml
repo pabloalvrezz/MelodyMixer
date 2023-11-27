@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/edtContraseñaUp"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
     <EditText
         android:id="@+id/edtApellidos"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
     <EditText
         android:id="@+id/edtCorreoUp"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
     <EditText
         android:id="@+id/edtNombreUp"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

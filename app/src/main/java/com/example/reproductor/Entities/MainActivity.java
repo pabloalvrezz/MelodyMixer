@@ -12,11 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reproductor.API.ApiManager;
-<<<<<<< HEAD
 import com.example.reproductor.MainPage.CancionAdapter;
-=======
-import com.example.reproductor.Buscador.CancionAdapter;
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
 import com.example.reproductor.MainPage.InicioSesion;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;
@@ -70,13 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
                     if ((!database.existeUsuarioContraseña(edContraseñaUp.getText().toString())) && (!database.existeUsuarioCorreo(edCorreoUp.getText().toString()))) {
-<<<<<<< HEAD
-                        Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
-                        database.addUsuario(db, registro);
-=======
-                        /*
-                            Creamos el usuario
-                        */
+
                         Usuarios registro = new Usuarios(edCorreoUp.getText().toString(), edNombreUp.getText().toString(), edApellidos.getText().toString(), edContraseñaUp.getText().toString());
                         database.addUsuario(db, registro);
                         /*
@@ -85,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         PlayList listaFav = new PlayList(1, "Favoritos", edCorreoUp.getText().toString());
                         database.addPlaylist(db, listaFav, registro);
 
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
                         intent = new Intent(MainActivity.this, MainPage.class);
                         intent.putExtra("usuario", registro);
                         startActivity(intent);

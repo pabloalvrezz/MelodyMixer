@@ -6,6 +6,7 @@
         android:id="@+id/mniAgregarFavoritos"
         android:icon="@drawable/no_fav_image"
         android:title="Agregar a favoritos" />
+    <item android:title="Crear Playlist"   android:id="@+id/mniCrearPlaylist"/>
     <item
         android:id="@+id/mniAgregarPlaylist"
         android:title="Agregar a playlist" />

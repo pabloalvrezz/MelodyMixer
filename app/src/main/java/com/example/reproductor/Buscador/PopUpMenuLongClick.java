@@ -1,11 +1,9 @@
 package com.example.reproductor.Buscador;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.example.reproductor.Entities.Canciones;
 import com.example.reproductor.Entities.PlayList;
@@ -45,18 +43,26 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
                 playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
 
                 // buscamos la que sea 'Favoritos'
-                for(PlayList playListFav: playlistUsuarioActual){
-                    if(playListFav.getNombre().equals("Favoritos"))
+                for (PlayList playListFav : playlistUsuarioActual) {
+                    if (playListFav.getNombre().equals("Favoritos")) {
                         // agregamos la cancion a la playlist de favoritos
-                        //db_melodyMixer.addPLCancion(db, playListFav,canciones.get(posicion));
-
-                        Toast.makeText(this.context, canciones.get(posicion).getNombre() , Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
+                        db_melodyMixer.addPLCancion(db, playListFav, canciones.get(posicion));
+                        db_melodyMixer.addCancion(db, canciones.get(posicion));
+                    }
                 }
                 break;
+
             // en caso de que quiera agregar la cancion a una playlist
             case R.id.mniAgregarPlaylist:
                 break;
+
+            // en caso de que quiera crear una nueva play list
+            case R.id.mniCrearPlaylist:
+                break;
         }
+
         return true;
     }
+
+
 }

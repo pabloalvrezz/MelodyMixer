@@ -5,22 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<<<<<<< HEAD
-=======
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginBottom="16dp"
-        android:text="Artist Name: "
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="parent" />
-
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -34,11 +18,7 @@
         app:layout_constraintVertical_bias="0.85">
 
         <ImageButton
-<<<<<<< HEAD
             android:id="@+id/imbAnterior"
-=======
-            android:id="@+id/imageButton2"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
             android:layout_width="50dp"
             android:layout_height="45dp"
             android:backgroundTint="@color/transparente"
@@ -46,11 +26,7 @@
             app:srcCompat="@drawable/previous_song_image" />
 
         <ImageButton
-<<<<<<< HEAD
             android:id="@+id/imbPlay"
-=======
-            android:id="@+id/imageButton"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/transparente"
@@ -58,11 +34,7 @@
             app:srcCompat="@drawable/play_image" />
 
         <ImageButton
-<<<<<<< HEAD
             android:id="@+id/imbSiguiente"
-=======
-            android:id="@+id/imageButton3"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
             android:layout_width="50dp"
             android:layout_height="45dp"
             android:backgroundTint="@color/transparente"
@@ -82,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-<<<<<<< HEAD
         android:id="@+id/txvNombreCancion"
         android:layout_width="338dp"
         android:layout_height="46dp"
@@ -107,31 +78,14 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
-=======
-        android:id="@+id/textViewNombreCancion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:text="Song Name: "
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imbFavorita"
         android:layout_width="40dp"
         android:layout_height="40dp"
-<<<<<<< HEAD
         android:layout_marginEnd="36dp"
         android:layout_marginBottom="4dp"
-=======
-        android:layout_marginStart="216dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="12dp"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         android:backgroundTint="@color/transparente"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
@@ -139,11 +93,7 @@
         app:srcCompat="@drawable/no_fav_image" />
 
     <ImageView
-<<<<<<< HEAD
         android:id="@+id/imgCancion"
-=======
-        android:id="@+id/imageView"
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
         android:layout_width="337dp"
         android:layout_height="285dp"
         android:layout_marginStart="37dp"

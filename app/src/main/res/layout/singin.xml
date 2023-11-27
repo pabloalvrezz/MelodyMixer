@@ -25,7 +25,7 @@
     <EditText
         android:id="@+id/edtCorreoIn"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
     <EditText
         android:id="@+id/edtContraseñaIn"
         android:layout_width="310dp"
-        android:layout_height="41dp"
+        android:layout_height="wrap_content"
         android:password="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,6 +1,5 @@
 package com.example.reproductor.Reproductor;
 
-<<<<<<< HEAD
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import com.example.reproductor.R;
 
 import java.io.IOException;
 
-=======
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -27,12 +25,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.reproductor.Entities.Canciones;
 import com.example.reproductor.R;
 
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
 public class Reproductor extends AppCompatActivity {
 
     private Canciones cancionActual;
 
-<<<<<<< HEAD
+
     ImageView imgCancion;
     TextView txvTextoCancion;
     TextView txvAutor;
@@ -42,14 +40,12 @@ public class Reproductor extends AppCompatActivity {
     ImageButton imbSiguiente;
     ImageButton imbAnterior;
 
-=======
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reproductor);
 
-<<<<<<< HEAD
         imgCancion = (ImageView)findViewById(R.id.imgCancion); // Imagen de la canción
         txvTextoCancion = (TextView)findViewById(R.id.txvNombreCancion); // TextView con el nombre de la canción
         txvAutor = (TextView)findViewById(R.id.txvAutor); // TextView para el nombre del autor de la canción
@@ -81,14 +77,15 @@ public class Reproductor extends AppCompatActivity {
                 try {
 
                     mp.setDataSource(cancionActual.getLinkPreview());
+                    mp.prepare();
                     mp.start();
                 }
                 catch(IOException e){
                 }
             }
         });
-=======
+
         cancionActual = (Canciones)this.getIntent().getSerializableExtra("cancionSeleccionada");
->>>>>>> 36a4bef44323b8c21e384190fbe802170dbb2151
+
     }
 }

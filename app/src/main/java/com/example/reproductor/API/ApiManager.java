@@ -41,13 +41,14 @@ public class ApiManager {
     public List<Canciones> obtenerCanciones(ApiResponse apiResponse) {
         List<Canciones> canciones = new ArrayList<>();
         Canciones cancion;
+
         // Verificar si la respuesta tiene resultados
         if (apiResponse != null && apiResponse.getResults() != null) {
             List<ResultadosDeApi> resultados = apiResponse.getResults();
 
             // Iterar sobre la lista de resultados y extraer los nombres de las canciones
             for (ResultadosDeApi resultado : resultados) {
-                // Verificar si el resultado es distinto de nulo
+                // Verificar si el resultado es distinto de nulo y es una cancion
                 if (resultado != null) {
                     cancion = new Canciones(resultado.getTrackId(), resultado.getTrackName() ,resultado.getArtistName(), resultado.getTrackTimeMillis(), resultado.getPrimaryGenreName(), resultado.getArtworkUrl100(), resultado.getPreviewUrl());
                     canciones.add(cancion);

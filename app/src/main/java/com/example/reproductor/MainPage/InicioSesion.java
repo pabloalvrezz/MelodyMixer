@@ -53,13 +53,5 @@ public class InicioSesion extends AppCompatActivity {
                 }
             }
         });
-
-        txvSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InicioSesion.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

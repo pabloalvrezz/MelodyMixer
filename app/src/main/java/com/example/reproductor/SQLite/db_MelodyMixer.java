@@ -1,5 +1,6 @@
 package com.example.reproductor.SQLite;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -223,6 +224,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
      * Metodo que usaremos para recuperar todas las listas
      * asociadas al usuario actual de la aplicacion
      */
+    @SuppressLint("Range")
     public List<PlayList> recuperarListasUsuario(Usuarios usuarioActual) {
         SQLiteDatabase db = this.getReadableDatabase(); // obtenemos la base de datos actual
         String consulta = "SELECT * FROM PLAYLIST WHERE usuario = ?";
@@ -248,9 +250,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
                 playlists.add(playList);
             }
-
-
-            // Crea un objeto Playlist y agrégalo a la lista
 
         }
 

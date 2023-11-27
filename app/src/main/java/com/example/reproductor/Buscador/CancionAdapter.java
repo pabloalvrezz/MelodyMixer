@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.reproductor.Entities.Canciones;
+import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 
 import java.util.List;
@@ -28,11 +29,14 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
     private List<Canciones> listaCanciones;
     private Context context;
     private OnItemClickListener listener;
+    private Usuarios usuarioActual;
+    private int posicionCancionSeleccionada;
 
     // Constructor
-    public CancionAdapter(Context context, List<Canciones> listaCanciones) {
+    public CancionAdapter(Context context, List<Canciones> listaCanciones, Usuarios usuarioActual) {
         this.context = context;
         this.listaCanciones = listaCanciones;
+        this.usuarioActual = usuarioActual;
     }
 
     // Interfaz para el escuchador de clics
@@ -66,7 +70,11 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
         // Cargamos la imagen de cada cancion
         Glide.with(context)
                 .load(imageUrl)
+                .placeholder(R.drawable.cargando_cancion_image)
                 .into(holder.imgSongBuscador);
+
+        // obtenemos la posicion de la cancion seleccionada
+        this.posicionCancionSeleccionada = position;
 
         // Configurar el clic en el ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +92,7 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
             public boolean onLongClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(context, view);
                 MenuInflater menuInflater = popupMenu.getMenuInflater();
-                PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context);
+                PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context, usuarioActual, listaCanciones, posicionCancionSeleccionada);
 
                 menuInflater.inflate(R.menu.pop_up, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(popUpMenuLongClick);

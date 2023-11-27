@@ -50,18 +50,13 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
                         // agregamos la cancion a la playlist de favoritos
                         //db_melodyMixer.addPLCancion(db, playListFav,canciones.get(posicion));
 
-                        Toast.makeText(this.context,canciones.get(posicion).getNombre() , Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
+                        Toast.makeText(this.context, canciones.get(posicion).getNombre() , Toast.LENGTH_SHORT).show(); //Mostramos el mensaje de ERROR
                 }
-
                 break;
-
             // en caso de que quiera agregar la cancion a una playlist
             case R.id.mniAgregarPlaylist:
                 break;
         }
-
         return true;
     }
-
-
 }

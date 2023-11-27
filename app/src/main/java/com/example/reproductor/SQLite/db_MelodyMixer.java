@@ -48,6 +48,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.execSQL(tabla_CANCIONES.INSERTA_CANCION1);
         db.execSQL(tabla_CANCIONES.INSERTA_CANCION2);
         db.execSQL(tabla_PLAYLIST.INSERTA_DEFECTO);
+        db.execSQL(tabla_PLAYLIST.INSERTA_DEFECTO_2);
         db.execSQL(tabla_PLAYLIST_CANCION.INSERTA_DEFECTO);
 
     }
@@ -245,7 +246,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
      */
 
     public List<PlayList> recuperarListasUsuario(Usuarios usuarioActual) {
-        SQLiteDatabase db = this.getReadableDatabase(); // obtenemos la base de datos actual
         String consulta = "SELECT * FROM PLAYLIST WHERE usuario = ?";
         Cursor cursor = getReadableDatabase().rawQuery(consulta, new String[]{usuarioActual.getCorreo()});
         long idPlaylist;
@@ -259,7 +259,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         // verificamos si se obtuvo resultados
         while (cursor.moveToNext()) {
             // Obtén los datos de cada fila y crea un objeto Playlist
-            idPlaylist = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID);
+            idPlaylist = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID) + 1;
             nombrePlaylistIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE);
 
             // en caso de que haya playlists las agregamos a la lista

@@ -31,7 +31,7 @@ public class InicioSesion extends AppCompatActivity {
         SQLiteDatabase db = database.getReadableDatabase();
 
         btnSignIn = findViewById(R.id.btnSingIn);
-        txvSignUp = findViewById(R.id.txvSignUp);
+        txvSignUp = findViewById(R.id.tvxCambioRegistro);
         edContraseñaIn = findViewById(R.id.edtContraseñaIn);
         edCorreoIn = findViewById(R.id.edtCorreoIn);
 
@@ -53,6 +53,12 @@ public class InicioSesion extends AppCompatActivity {
             }
         });
 
-
+        txvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InicioSesion.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

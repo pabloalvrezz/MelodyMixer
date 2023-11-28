@@ -107,9 +107,6 @@ public class BuscadorCanciones extends AppCompatActivity {
 
                 startActivity(intent, options.toBundle());
 
-                //startActivity(intent,
-                //      ActivityOptions.makeSceneTransitionAnimation(BuscadorCanciones.this).toBundle());
-
             }
         });
 

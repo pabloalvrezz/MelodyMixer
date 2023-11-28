@@ -11,6 +11,7 @@ import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
@@ -30,6 +31,10 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
         db_melodyMixer = new db_MelodyMixer(this.context);
     }
 
+    /*
+     * TODO
+     * agregar la comprobacion de que la cancion no se encuentre ya en favoritos
+     */
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         SQLiteDatabase db = db_melodyMixer.getReadableDatabase();
@@ -54,6 +59,18 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
 
             // en caso de que quiera agregar la cancion a una playlist
             case R.id.mniAgregarPlaylist:
+                List<PlayList> playListNoFavs = new ArrayList<>(); // todas las playlist sin favs
+
+                playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
+
+                // buscamos las que no sean 'Favoritos'
+                for (PlayList playListNoFav : playlistUsuarioActual) {
+                    if (!playListNoFav.getNombre().equals("Favoritos")) {
+                        playListNoFavs.add(playListNoFav);
+                    }
+                }
+                DialogoSeleccionPlayList dialogoSeleccionPlayList = new DialogoSeleccionPlayList(playListNoFavs);
+
                 break;
 
             // en caso de que quiera crear una nueva play list

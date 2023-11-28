@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.675" />
 
     <TextView
-        android:id="@+id/txvPassword"
+        android:id="@+id/txvContraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contraseña"

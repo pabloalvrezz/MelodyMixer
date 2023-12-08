@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reproductor.API.ApiManager;
-import com.example.reproductor.MainPage.CancionAdapter;
 
+import com.example.reproductor.Buscador.CancionAdapter;
 import com.example.reproductor.MainPage.InicioSesion;
 import com.example.reproductor.MainPage.MainPage;
 import com.example.reproductor.R;

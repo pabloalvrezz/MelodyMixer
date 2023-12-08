@@ -239,18 +239,16 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return apellidos;
     }
 
-
     /*
      * Metodo que usaremos para recuperar todas las listas
      * asociadas al usuario actual de la aplicacion
      */
-
     public List<PlayList> recuperarListasUsuario(Usuarios usuarioActual) {
         String consulta = "SELECT * FROM PLAYLIST WHERE usuario = ?";
         Cursor cursor = getReadableDatabase().rawQuery(consulta, new String[]{usuarioActual.getCorreo()});
         long idPlaylist;
-        int nombrePlaylistIndex;
-        String nombrePlaylist = "";
+        int nombrePlaylistIndex, urlPlaylistIndex;
+        String nombrePlaylist = "", urlPlaylist = "";
         PlayList playList;
 
         // Lista para almacenar las playlist del usuario
@@ -261,15 +259,16 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
             // Obtén los datos de cada fila y crea un objeto Playlist
             idPlaylist = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID) + 1;
             nombrePlaylistIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE);
+            urlPlaylistIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_IMG);
 
             // en caso de que haya playlists las agregamos a la lista
             if (nombrePlaylistIndex > 0) {
                 nombrePlaylist = cursor.getString(nombrePlaylistIndex);
-                playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo(), "https://img.freepik.com/vector-premium/amo-etiqueta-engomada-musica-logotipo-icono-vector-canciones-reproductor-musica-logotipo-lista-reproduccion-vector-sobre-fondo-aislado-eps-10_399089-1088.jpg?w=740");
+                urlPlaylist = cursor.getString(urlPlaylistIndex);
+                playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo(), urlPlaylist);
 
                 playlists.add(playList);
             }
-
         }
 
         // Cierra el cursor después de usarlo
@@ -278,11 +277,36 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return playlists;
     }
 
+    // metodo que usaremos para verficiar si la cancion actual se encuentra en la playlist
+    public boolean seEncuentraEnPlayList(PlayList playList, Canciones cancion) {
+        SQLiteDatabase db = getReadableDatabase();
 
+        // Consulta para verificar si la canción está en la playlist
+        String consulta = "SELECT * FROM " + tabla_PLAYLIST.TABLE_NAME +
+                " WHERE " + tabla_PLAYLIST_CANCION.ColumnasPlayCanciones.COLUMNA_ID_PLAYLIST + " = ?" +
+                " AND " + tabla_PLAYLIST_CANCION.ColumnasPlayCanciones.COLUMNA_ID_CANCION + " = ?";
+
+        // Parámetros para la consulta
+        String[] parametros = {String.valueOf(playList.getId()), String.valueOf(cancion.getId())};
+
+        // Ejecutar la consulta
+        Cursor cursor = db.rawQuery(consulta, parametros);
+
+        // Verificar si hay resultados
+        boolean seEncuentraEnPlayList = cursor.moveToFirst();
+
+        // Cerrar el cursor después de usarlo
+        cursor.close();
+
+        return seEncuentraEnPlayList;
+
+    }
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {
         File dbFile = context.getDatabasePath(DATABASE_NAME);
         return dbFile.exists();
     }
+
+
 }

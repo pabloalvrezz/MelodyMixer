@@ -2,7 +2,9 @@ package com.example.reproductor.Buscador;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -86,21 +88,36 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
             }
         });
 
-        // configuramos el escuchador para la pulsacion larga
+        // configuramos el escuchador para la pulsación larga
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(context, view);
                 MenuInflater menuInflater = popupMenu.getMenuInflater();
+
+                // Crear instancia de PopUpMenuLongClick
                 PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context, usuarioActual, listaCanciones, posicionCancionSeleccionada);
 
+                // Obtener el menú inflado
                 menuInflater.inflate(R.menu.pop_up, popupMenu.getMenu());
+
+                // Agregar dinámicamente un ítem al menú solo si hay más de dos playlist
+                // ya que una de ellas va a ser la de favoritos
+                Menu menu = popupMenu.getMenu();
+                if (popUpMenuLongClick.getPlaylistUsuarioActual().size() > 1) {
+                    menu.add(Menu.NONE, 14, Menu.NONE, "Agregar a playlist");
+                }
+
+                // Establecer el escuchador para el menú
                 popupMenu.setOnMenuItemClickListener(popUpMenuLongClick);
 
+                // Mostrar el menú emergente
                 popupMenu.show();
                 return true;
             }
         });
+
+
     }
 
     @Override

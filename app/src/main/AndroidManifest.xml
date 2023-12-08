@@ -25,14 +25,6 @@
         <activity android:name=".MainPage.MainPage" />
 
         <activity
-            android:name=".MainPage.BuscadorCanciones"
-            android:parentActivityName=".MainPage.MainPage">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainPage.MainPage" />
-        </activity>
-
-        <activity
             android:name=".Entities.AcercaDe"
             android:parentActivityName=".MainPage.MainPage">
             <meta-data

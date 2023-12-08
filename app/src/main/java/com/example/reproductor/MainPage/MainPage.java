@@ -98,8 +98,6 @@ public class MainPage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainPage.this, BuscadorCanciones.class);
 
-                // Configuramos las animaciones
-
                 intent.putExtra("usuarioActual", usuarioActual);
 
                 startActivity(intent);

@@ -14,5 +14,6 @@ public class PlayList {
     private long id;
     private String nombre;
     private String usuarioId;
+    private String imgURLPlaylist;
 
 }

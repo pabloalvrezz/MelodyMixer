@@ -4,6 +4,7 @@ import android.app.ActivityOptions;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,18 +14,23 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.API.ApiManager;
 
 import com.example.reproductor.API.ApiResponse;
+import com.example.reproductor.Buscador.PlayListAdapter;
 import com.example.reproductor.Entities.Canciones;
 
 import com.example.reproductor.Buscador.BuscadorCanciones;
 import com.example.reproductor.Buscador.CancionAdapter;
+import com.example.reproductor.Entities.PlayList;
 import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
+import com.example.reproductor.SQLite.db_MelodyMixer;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -51,6 +57,8 @@ public class MainPage extends AppCompatActivity {
     private ApiManager apiManager;
     private CancionAdapter cancionAdapter;
     private ConstraintLayout cnlBuscador;
+    private List<PlayList> listaPlaylistRecomendadas, listaPlaylistFavs;
+    private db_MelodyMixer database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,16 @@ public class MainPage extends AppCompatActivity {
         txtSaludo = (TextView) findViewById(R.id.txtSaludo);
         imbBuscador = (ImageButton)findViewById(R.id.imbBuscador);
         cnlBuscador = (ConstraintLayout)findViewById(R.id.cnlBuscador);
+        rvhListasDeUsuario = findViewById(R.id.rvhListasDeUsuario);
+        database = new db_MelodyMixer(this);
+
+        listaPlaylistRecomendadas = new ArrayList<>();
+        listaPlaylistRecomendadas = database.recuperarListasUsuario(usuarioActual);
+
+        PlayListAdapter adapter = new PlayListAdapter(this, listaPlaylistRecomendadas, usuarioActual);
+        adapter.setListaCanciones(listaPlaylistRecomendadas);
+
+        rvhListasDeUsuario.setAdapter(adapter);
 
         cnlBuscador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +108,6 @@ public class MainPage extends AppCompatActivity {
 
             }
         });
-
         // establecemos el saludo
         this.establecerSaludo();
 
@@ -114,8 +131,5 @@ public class MainPage extends AppCompatActivity {
                 this.txtSaludo.setText("Buenas noches, " + usuarioActual.getUsuario());
             }
         }
-
     }
-
-
 }

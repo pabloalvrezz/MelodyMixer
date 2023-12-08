@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         /*
                             Creamos las PlayList 'Favoritos'
                         */
-                        PlayList listaFav = new PlayList(1, "Favoritos", edCorreoUp.getText().toString());
+                        PlayList listaFav = new PlayList(1, "Favoritos", edCorreoUp.getText().toString(), "https://img.freepik.com/vector-premium/amo-etiqueta-engomada-musica-logotipo-icono-vector-canciones-reproductor-musica-logotipo-lista-reproduccion-vector-sobre-fondo-aislado-eps-10_399089-1088.jpg?w=740");
                         database.addPlaylist(db, listaFav, registro);
 
 

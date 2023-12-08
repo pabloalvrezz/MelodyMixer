@@ -10,6 +10,7 @@ public class tabla_PLAYLIST {
         public static final String COLUMNA_ID = "id";
         public static final String COLUMNA_NOMBRE = "nombre";
         public static final String COLUMNA_ID_USUARIO = "usuario";
+        public static final String COLUMNA_IMG = "imgPlaylist";
     }
 
     //Sentencia para crear la tabla
@@ -17,6 +18,7 @@ public class tabla_PLAYLIST {
             "CREATE TABLE " + TABLE_NAME + " (" + ColumnasPlayList.COLUMNA_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     ColumnasPlayList.COLUMNA_NOMBRE + " TEXT," +
                     ColumnasPlayList.COLUMNA_ID_USUARIO + " TEXT," +
+                    ColumnasPlayList.COLUMNA_IMG + " TEXT," +
                     "FOREIGN KEY(" + ColumnasPlayList.COLUMNA_ID_USUARIO + ") REFERENCES " + tabla_USUARIOS.TABLE_NAME + "(" + tabla_USUARIOS.ColumnasUsuarios.COLUMNA_ID + "))";
 
     //Insertamos valores por defecto

@@ -265,7 +265,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
             // en caso de que haya playlists las agregamos a la lista
             if (nombrePlaylistIndex > 0) {
                 nombrePlaylist = cursor.getString(nombrePlaylistIndex);
-                playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo());
+                playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo(), "https://img.freepik.com/vector-premium/amo-etiqueta-engomada-musica-logotipo-icono-vector-canciones-reproductor-musica-logotipo-lista-reproduccion-vector-sobre-fondo-aislado-eps-10_399089-1088.jpg?w=740");
 
                 playlists.add(playList);
             }

@@ -1,5 +1,6 @@
 package com.example.reproductor.Reproductor;
 
+import android.media.AudioManager;
 import android.media.Image;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -17,19 +18,9 @@ import com.example.reproductor.R;
 
 import java.io.IOException;
 
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.reproductor.Entities.Canciones;
-import com.example.reproductor.R;
-
-
 public class Reproductor extends AppCompatActivity {
 
     private Canciones cancionActual;
-
 
     ImageView imgCancion;
     TextView txvTextoCancion;
@@ -40,6 +31,9 @@ public class Reproductor extends AppCompatActivity {
     ImageButton imbSiguiente;
     ImageButton imbAnterior;
 
+    MediaPlayer mp;
+    boolean botonPlay;
+    int Playposition;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -54,7 +48,6 @@ public class Reproductor extends AppCompatActivity {
         imbPlay = (ImageButton)findViewById(R.id.imbPlay); // imagen para el boton de play
         imbSiguiente = (ImageButton)findViewById(R.id.imbSiguiente); // imagen para pasar a la siguiente cancion
         imbAnterior = (ImageButton)findViewById(R.id.imbAnterior); // imagen para pasar a la anterior cancion
-
         // LLega objeto cancion para conseguir toda la información de la canción seleccionada
         cancionActual = (Canciones)this.getIntent().getSerializableExtra("cancionSeleccionada");
 
@@ -70,22 +63,38 @@ public class Reproductor extends AppCompatActivity {
         txvTextoCancion.setText(cancionActual.getNombre().toString());
         txvAutor.setText(cancionActual.getArtistaNombre().toString());
 
+        mp = new MediaPlayer();
+        try{
+            mp.setDataSource(cancionActual.getLinkPreview());
+            mp.prepare();
+        }catch(IOException | IllegalStateException e){
+            e.printStackTrace();
+        }
+
+        botonPlay = false;
         imbPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mp = new MediaPlayer();
                 try {
-
-                    mp.setDataSource(cancionActual.getLinkPreview());
-                    mp.prepare();
-                    mp.start();
-                }
-                catch(IOException e){
+                    if(!botonPlay){
+                        imbPlay.setImageResource(R.drawable.pause_image);
+                        mp.start();
+                        botonPlay = true;
+                    }
+                    else{
+                        imbPlay.setImageResource(R.drawable.play_image);
+                        mp.pause();
+                        botonPlay = false;
+                    }
+                }catch(IllegalStateException e){
+                    e.printStackTrace();
                 }
             }
         });
-
-        cancionActual = (Canciones)this.getIntent().getSerializableExtra("cancionSeleccionada");
-
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        mp.release();
     }
 }

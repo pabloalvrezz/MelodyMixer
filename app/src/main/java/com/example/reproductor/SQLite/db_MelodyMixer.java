@@ -86,9 +86,9 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     //Método para añadir fila a PLAYLIST
     public void addPlaylist(SQLiteDatabase db, PlayList playList, Usuarios usuario) {
         ContentValues values = new ContentValues();
-        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID, playList.getId());
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE, playList.getNombre());
         values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO, usuario.getCorreo());
+        values.put(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_IMG, playList.getImgURLPlaylist());
 
         db.insert(tabla_PLAYLIST.TABLE_NAME, null, values);
     }

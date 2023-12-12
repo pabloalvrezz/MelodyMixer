@@ -51,12 +51,11 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
         // recuperamos todas las playlist del usuario actual
         playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
     }
-
-
     /*
      * TODO
      * agregar la comprobacion de que la cancion no se encuentre ya en favoritos
      */
+
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         SQLiteDatabase db = db_melodyMixer.getReadableDatabase();
@@ -109,6 +108,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
              * En caso de que el usuario quiera crear una nueva playlist, la crearemos y agregaremos
              * la cancion directamente a la playlist
              */
+
             case R.id.mniCrearPlaylist:
                 AlertDialog.Builder builderCrearPlaylist = new AlertDialog.Builder(context);
                 LayoutInflater inflater = LayoutInflater.from(context);
@@ -204,6 +204,4 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
 
         return existe;
     }
-
-
 }

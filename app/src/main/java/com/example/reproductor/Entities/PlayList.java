@@ -1,6 +1,7 @@
 package com.example.reproductor.Entities;
 
 
+import androidx.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,10 @@ public class PlayList {
     private String usuarioId;
     private String imgURLPlaylist;
 
+    public PlayList(String nombre, String usuarioId, String imgURLPlaylist){
+        this.nombre = nombre;
+        this.usuarioId = usuarioId;
+        this.imgURLPlaylist = imgURLPlaylist;
+    }
 }
+

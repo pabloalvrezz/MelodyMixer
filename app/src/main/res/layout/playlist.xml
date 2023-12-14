@@ -23,7 +23,7 @@
         //Layout final, de momento solo contiene la lista de playlists
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tlbBuscador"
+            android:id="@+id/tlbAtrasAcercaDe"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/fondo_claro">

@@ -59,6 +59,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         SQLiteDatabase db = db_melodyMixer.getReadableDatabase();
+        PlayListAdapter adapter;
 
         // evaluamos que item ha pulsado el usuario
         switch (menuItem.getItemId()) {
@@ -67,6 +68,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
 
                 // obtenemos todas las playlists del usuario
                 playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
+                adapter = new PlayListAdapter(this.context, playlistUsuarioActual);
 
                 // buscamos la que sea 'Favoritos'
                 for (PlayList playListFav : playlistUsuarioActual) {
@@ -77,6 +79,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
                         if (db_melodyMixer.seEncuentraEnPlayList(playListFav, canciones.get(posicion)) == false) {
                             db_melodyMixer.addPLCancion(db, playListFav, canciones.get(posicion));
                             db_melodyMixer.addCancion(db, canciones.get(posicion));
+                            adapter.setPlaylists(db_melodyMixer.recuperarListasUsuario(usuarioActual));
                             Toast.makeText(this.context, "Se agrega correctamente a favs", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(this.context, "Ya existe la cancion en favoritos", Toast.LENGTH_LONG).show();

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.singup);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tlbBuscador);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tlbAtrasAcercaDe);
         setSupportActionBar(toolbar);
 
         db_MelodyMixer database = new db_MelodyMixer(this);     //Creamos el objeto de la BD

@@ -17,7 +17,7 @@
                 <item android:id="@+id/Perfil"
                     android:title="Perfil de usuario" />
                 <item android:id="@+id/Salir"
-                    android:title="Salir de la aplicación" />
+                    android:title="Cerrar Sesión" />
             </menu>
         </item>
 

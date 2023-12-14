@@ -108,7 +108,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     }
 
 
-
     //Método para añadir fila a ALBUMES
     public void addArtistas(SQLiteDatabase db, Artistas artista) {
 
@@ -149,8 +148,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         cursor.close();
         return existeUsuario;
     }
-
-
 
     /*
      * Metodo que usaremos para comprobar si hay una contraseña asociada al usurio que esta
@@ -210,7 +207,6 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         // Devuelve el nombre o null si no se encontró
         return nombre;
     }
-
 
     /*
      * Metodo que usaremos

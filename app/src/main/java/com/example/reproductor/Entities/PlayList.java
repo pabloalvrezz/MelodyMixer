@@ -1,6 +1,8 @@
 package com.example.reproductor.Entities;
 
 
+import java.io.Serializable;
+
 import androidx.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlayList {
+public class PlayList implements Serializable {
     private long id;
     private String nombre;
     private String usuarioId;

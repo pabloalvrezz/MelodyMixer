@@ -1,6 +1,8 @@
 package com.example.reproductor.Buscador;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +19,10 @@ import com.example.reproductor.Entities.Usuarios;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.reproductor.PlayList.CancionesPlayList;
 import com.example.reproductor.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -74,6 +78,9 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if (listener != null) {
+                    Intent intent = new Intent(context, CancionesPlayList.class);
+                    intent.putExtra("playlist", currentPlaylist);
+                    context.startActivity(intent);
                     listener.onItemClick(position);
                 }
             }

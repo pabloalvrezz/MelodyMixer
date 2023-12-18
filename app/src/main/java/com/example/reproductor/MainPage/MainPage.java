@@ -18,6 +18,7 @@ import com.example.reproductor.Entities.AcercaDe;
 import com.example.reproductor.Entities.Perfil;
 import com.example.reproductor.Entities.PlayList;
 import com.example.reproductor.Entities.Usuarios;
+import com.example.reproductor.PlayList.CancionesPlayList;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
@@ -119,7 +120,6 @@ public class MainPage extends AppCompatActivity {
         playListAdapterFavs.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
             }
         });
 

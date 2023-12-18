@@ -142,8 +142,4 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
             txtArtistNameBuscador = itemView.findViewById(R.id.txtSongGenre);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003

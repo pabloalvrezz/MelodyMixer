@@ -53,6 +53,8 @@
         </activity>
         <activity android:name=".MainPage.InicioSesion" />
 
+        <activity android:name=".PlayList.CancionesPlayList"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

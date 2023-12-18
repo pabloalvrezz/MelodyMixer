@@ -22,6 +22,7 @@ import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 import com.example.reproductor.Reproductor.Reproductor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,6 +112,8 @@ public class BuscadorCanciones extends AppCompatActivity {
 
                 // Pasamos la cancion que ha seleccionado el usuario
                 intent.putExtra("cancionSeleccionada", cancionSeleccionada);
+
+                intent.putExtra("cancionesBuscador", (Serializable) listaCanciones);
 
                 startActivity(intent, options.toBundle());
             }

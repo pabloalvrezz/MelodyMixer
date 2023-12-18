@@ -23,10 +23,10 @@ public class tabla_PLAYLIST {
 
     //Insertamos valores por defecto
     public static final String INSERTA_DEFECTO =
-            "insert into "+TABLE_NAME+" values(2, 'POP', null)";
+            "insert into "+TABLE_NAME+" values(0,'POP', null, 'https://cdn-icons-png.flaticon.com/128/11013/11013154.png')";
 
     public static final String INSERTA_DEFECTO_2 =
-            "insert into "+TABLE_NAME+" values(3, 'ROCK', null)";
+            "insert into "+TABLE_NAME+" values(1,'ROCK', null, 'https://cdn-icons-png.flaticon.com/128/498/498448.png')";
 
     private db_MelodyMixer openHelper;
     private SQLiteDatabase database;

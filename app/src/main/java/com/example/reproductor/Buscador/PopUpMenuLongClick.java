@@ -51,15 +51,15 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
         // recuperamos todas las playlist del usuario actual
         playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
     }
-
-
     /*
      * TODO
      * agregar la comprobacion de que la cancion no se encuentre ya en favoritos
      */
+
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         SQLiteDatabase db = db_melodyMixer.getReadableDatabase();
+        PlayListAdapter adapter;
 
         // evaluamos que item ha pulsado el usuario
         switch (menuItem.getItemId()) {
@@ -68,6 +68,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
 
                 // obtenemos todas las playlists del usuario
                 playlistUsuarioActual = db_melodyMixer.recuperarListasUsuario(usuarioActual);
+                adapter = new PlayListAdapter(this.context, playlistUsuarioActual);
 
                 // buscamos la que sea 'Favoritos'
                 for (PlayList playListFav : playlistUsuarioActual) {
@@ -78,6 +79,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
                         if (db_melodyMixer.seEncuentraEnPlayList(playListFav, canciones.get(posicion)) == false) {
                             db_melodyMixer.addPLCancion(db, playListFav, canciones.get(posicion));
                             db_melodyMixer.addCancion(db, canciones.get(posicion));
+                            adapter.setPlaylists(db_melodyMixer.recuperarListasUsuario(usuarioActual));
                             Toast.makeText(this.context, "Se agrega correctamente a favs", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(this.context, "Ya existe la cancion en favoritos", Toast.LENGTH_LONG).show();
@@ -109,6 +111,7 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
              * En caso de que el usuario quiera crear una nueva playlist, la crearemos y agregaremos
              * la cancion directamente a la playlist
              */
+
             case R.id.mniCrearPlaylist:
                 AlertDialog.Builder builderCrearPlaylist = new AlertDialog.Builder(context);
                 LayoutInflater inflater = LayoutInflater.from(context);
@@ -204,6 +207,4 @@ public class PopUpMenuLongClick implements PopupMenu.OnMenuItemClickListener {
 
         return existe;
     }
-
-
 }

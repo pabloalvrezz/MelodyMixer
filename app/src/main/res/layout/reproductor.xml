@@ -42,22 +42,12 @@
             app:srcCompat="@drawable/next_song_image" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="337dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginEnd="37dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/txvNombreCancion"
         android:layout_width="338dp"
         android:layout_height="46dp"
         android:layout_marginStart="36dp"
+        android:layout_marginEnd="37dp"
         android:layout_marginBottom="4dp"
         android:text="Song Name: "
         android:textAlignment="textStart"
@@ -65,31 +55,37 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txvAutor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txvAutor"
-        android:layout_width="281dp"
-        android:layout_height="34dp"
+        android:layout_width="244dp"
+        android:layout_height="36dp"
         android:layout_marginStart="36dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="16dp"
         android:text="Artist Name: "
         android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintEnd_toStartOf="@+id/imbFavorita"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imbFavorita"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_marginStart="18dp"
         android:layout_marginEnd="36dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="14dp"
         android:backgroundTint="@color/transparente"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvAutor"
         app:srcCompat="@drawable/no_fav_image" />
 
     <ImageView
@@ -102,8 +98,10 @@
         android:layout_marginBottom="107dp"
         app:layout_constraintBottom_toTopOf="@+id/imbFavorita"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cargando_cancion_image"
         tools:srcCompat="@drawable/cargando_cancion_image" />
 
@@ -118,10 +116,22 @@
         app:layout_constraintVertical_bias="0.002">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tlbBuscador"
+            android:id="@+id/tlbAtrasAcercaDe"
             android:layout_width="match_parent"
             android:layout_height="67dp"
             android:background="@color/fondo_claro" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="337dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,47 +1,37 @@
 package com.example.reproductor.MainPage;
 
-import android.app.ActivityOptions;
-
+import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import android.widget.Toast;
-
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.reproductor.API.ApiManager;
-
-import com.example.reproductor.API.ApiResponse;
-import com.example.reproductor.Buscador.PlayListAdapter;
-import com.example.reproductor.Entities.Canciones;
-
 import com.example.reproductor.Buscador.BuscadorCanciones;
 import com.example.reproductor.Buscador.CancionAdapter;
+import com.example.reproductor.Buscador.PlayListAdapter;
+import com.example.reproductor.Entities.AcercaDe;
+import com.example.reproductor.Entities.Perfil;
 import com.example.reproductor.Entities.PlayList;
 import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -51,11 +41,12 @@ public class MainPage extends AppCompatActivity {
 
     private Usuarios usuarioActual;
     private List<ListasHorizontal> elementos;
-    private RecyclerView rvhListasRecomendadas, rvhListasDeUsuario;
+    private RecyclerView rvhListasRecomendadas, rvhListasUsuario;
     private ImageButton imbBuscador;
     private TextView txtSaludo;
     private ApiManager apiManager;
     private CancionAdapter cancionAdapter;
+    private PlayListAdapter playListAdapterFavs, playListAdapterRec;
     private ConstraintLayout cnlBuscador;
     private List<PlayList> listaPlaylistRecomendadas, listaPlaylistFavs;
     private db_MelodyMixer database;
@@ -64,20 +55,30 @@ public class MainPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+
+        Toolbar toolbar = findViewById(R.id.tlbAtrasAcercaDe);
+        setSupportActionBar(toolbar);
+
         usuarioActual = (Usuarios) this.getIntent().getSerializableExtra("usuario");
         txtSaludo = (TextView) findViewById(R.id.txtSaludo);
         imbBuscador = (ImageButton)findViewById(R.id.imbBuscador);
         cnlBuscador = (ConstraintLayout)findViewById(R.id.cnlBuscador);
-        rvhListasDeUsuario = findViewById(R.id.rvhListasDeUsuario);
         database = new db_MelodyMixer(this);
 
-        listaPlaylistRecomendadas = new ArrayList<>();
-        listaPlaylistRecomendadas = database.recuperarListasUsuario(usuarioActual);
+        listaPlaylistFavs = database.recuperarListasUsuario(usuarioActual);
 
-        PlayListAdapter adapter = new PlayListAdapter(this, listaPlaylistRecomendadas, usuarioActual);
-        adapter.setListaCanciones(listaPlaylistRecomendadas);
+        //RecyclerView de las PlayList de Favoritos y creadas
+        rvhListasUsuario = findViewById(R.id.rvhListasUsuario);
+        playListAdapterFavs = new PlayListAdapter(this, database.recuperarListasUsuario(usuarioActual));
+        rvhListasUsuario.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        rvhListasUsuario.setAdapter(this.playListAdapterFavs);
 
-        rvhListasDeUsuario.setAdapter(adapter);
+        //RecyclerView de las PlayList Recomendas (POP y ROCK)
+        rvhListasRecomendadas = findViewById(R.id.rvhRecomendados);
+        playListAdapterRec = new PlayListAdapter(this, database.recuperarListasRecomendadas());
+        rvhListasRecomendadas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        rvhListasRecomendadas.setAdapter(this.playListAdapterRec);
+
 
         cnlBuscador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +110,19 @@ public class MainPage extends AppCompatActivity {
         // establecemos el saludo
         this.establecerSaludo();
 
+        playListAdapterRec.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+            }
+        });
+
+        playListAdapterFavs.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+        });
+
     }
     /*
      * Metodo utilizado para establecer el saludo dependiendo
@@ -129,5 +143,30 @@ public class MainPage extends AppCompatActivity {
                 this.txtSaludo.setText("Buenas noches, " + usuarioActual.getUsuario());
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_paginaprincipal, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Salir:
+                this.finish();
+                break;
+            case R.id.AcercaDe:
+                Intent acercade = new Intent(getApplicationContext(), AcercaDe.class);
+                startActivity(acercade);
+                break;
+            case R.id.Perfil:
+                Intent perfil = new Intent(getApplicationContext(), Perfil.class);
+                startActivity(perfil);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

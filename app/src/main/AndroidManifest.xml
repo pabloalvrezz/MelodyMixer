@@ -39,9 +39,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainPage.MainPage" />
         </activity>
-        <activity android:name=".Buscador.BuscadorCanciones"></activity>
+        <activity android:name=".Buscador.BuscadorCanciones">
+            android:parentActivityName=".MainPage.MainPage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainPage.MainPage" />
+        </activity>
+        <activity android:name=".Reproductor.Reproductor">
+            android:parentActivityName=".MainPage.MainPage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainPage.MainPage" />
+        </activity>
         <activity android:name=".MainPage.InicioSesion" />
-        <activity android:name=".Reproductor.Reproductor" />
 
         <meta-data
             android:name="preloaded_fonts"

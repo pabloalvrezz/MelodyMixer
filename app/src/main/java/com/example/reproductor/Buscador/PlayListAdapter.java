@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -19,24 +21,31 @@ import com.example.reproductor.R;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHolder> {
-    private List<PlayList> listaPlatlist;
-    private Context context;
-    private PlayListAdapter.OnItemClickListener listener;
-    private Usuarios usuarioActual;
-    private int posicionCancionSeleccionada;
 
-    // Constructor
-    public PlayListAdapter(Context context, List<PlayList> listaPlaylist, Usuarios usuarioActual) {
+    private Context context;
+    private List<PlayList> playlists;
+    private OnItemClickListener listener;
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listas_horizontal, parent, false);
+        return new ViewHolder(view);
+    }
+
+    public PlayListAdapter(Context context, List<PlayList> playList){
         this.context = context;
-        this.listaPlatlist = listaPlaylist;
-        this.usuarioActual = usuarioActual;
+        this.playlists = playList;
     }
 
     // Interfaz para el escuchador de clics
@@ -45,36 +54,22 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
     // Método para establecer el escuchador
-    public void setOnItemClickListener(PlayListAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cancion, parent, false);
-        return new PlayListAdapter.ViewHolder(view);
-    }
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        PlayList currentPlaylist = playlists.get(position);
 
-    @Override
-    public void onBindViewHolder(PlayListAdapter.ViewHolder holder, int position) {
-        PlayList currentPlaylist = listaPlatlist.get(position);
-        // Configurar las vistas con datos desde la lista de playList
-        holder.txtPLNameBuscador.setText(currentPlaylist.getNombre() != null ? currentPlaylist.getNombre() : "<Sin Nombre>");
-
-        // Obtener la URL de la imagen de la canción
-        String imageUrl = currentPlaylist.getImgURLPlaylist();
-
-        // Cargamos la imagen de cada cancion
-        Glide.with(context)
-                .load(imageUrl)
+        // configuramos la foto y el nombre de la playlist
+        holder.txtNombreCancionHorizontal.setText(currentPlaylist.getNombre());
+        Glide.with(this.context)
+                .load(currentPlaylist.getImgURLPlaylist())
                 .placeholder(R.drawable.cargando_cancion_image)
-                .into(holder.imgPLBuscador);
+                .into(holder.imgListasHorizontal);
 
-        // obtenemos la posicion de la cancion seleccionada
-        this.posicionCancionSeleccionada = position;
-
-        // Configurar el clic en el ViewHolder
+        //Configurar el clic en el ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,25 +82,28 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        if (listaPlatlist != null)
-            return listaPlatlist.size();
-        else
-            return 0;
+        if (playlists != null)
+            return playlists.size();
+
+        return 0;
     }
 
-    public void setListaCanciones(List<PlayList> listaPlayList) {
-        this.listaPlatlist = listaPlayList;
+    public void setPlaylists(List<PlayList> playlists){
+        this.playlists = playlists;
         notifyDataSetChanged();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgPLBuscador;
-        TextView txtPLNameBuscador;
 
-        ViewHolder(View itemView) {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView imgListasHorizontal;
+        TextView txtNombreCancionHorizontal;
+
+        public ViewHolder(View itemView) {
             super(itemView);
-            imgPLBuscador = itemView.findViewById(R.id.imgListaHorizontal);
-            txtPLNameBuscador = itemView.findViewById(R.id.txtNombreCancionHorizontal);
+            this.imgListasHorizontal = itemView.findViewById(R.id.imgListaHorizontal);
+            this.txtNombreCancionHorizontal = itemView.findViewById(R.id.txtNombreCancionHorizontal);
+
         }
     }
 }

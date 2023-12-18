@@ -22,6 +22,7 @@ import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Reproductor extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class Reproductor extends AppCompatActivity {
     SQLiteDatabase db;
 
     private Canciones cancionActual;
+    private List<Canciones> cancionesBuscador;
 
     ImageView imgCancion;
     TextView txvTextoCancion;
@@ -65,6 +67,7 @@ public class Reproductor extends AppCompatActivity {
 
         // LLega objeto cancion para conseguir toda la información de la canción seleccionada
         cancionActual = (Canciones)this.getIntent().getSerializableExtra("cancionSeleccionada");
+        cancionesBuscador = (List<Canciones>) this.getIntent().getSerializableExtra("cancionesBuscador");
 
         //Conseguimos el url dado
         String imageUrl = cancionActual.getLinkImage();

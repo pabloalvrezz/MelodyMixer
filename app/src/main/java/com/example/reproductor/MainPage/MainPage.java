@@ -46,7 +46,7 @@ public class MainPage extends AppCompatActivity {
     private TextView txtSaludo;
     private ApiManager apiManager;
     private CancionAdapter cancionAdapter;
-    private PlayListAdapter playListAdapter;
+    private PlayListAdapter playListAdapterFavs, playListAdapterRec;
     private ConstraintLayout cnlBuscador;
     private List<PlayList> listaPlaylistRecomendadas, listaPlaylistFavs;
     private db_MelodyMixer database;
@@ -65,12 +65,20 @@ public class MainPage extends AppCompatActivity {
         cnlBuscador = (ConstraintLayout)findViewById(R.id.cnlBuscador);
         database = new db_MelodyMixer(this);
 
-        listaPlaylistRecomendadas = database.recuperarListasUsuario(usuarioActual);
+        listaPlaylistFavs = database.recuperarListasUsuario(usuarioActual);
 
+        //RecyclerView de las PlayList de Favoritos y creadas
         rvhListasUsuario = findViewById(R.id.rvhListasUsuario);
-        playListAdapter = new PlayListAdapter(this, database.recuperarListasUsuario(usuarioActual));
+        playListAdapterFavs = new PlayListAdapter(this, database.recuperarListasUsuario(usuarioActual));
         rvhListasUsuario.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
-        rvhListasUsuario.setAdapter(this.playListAdapter);
+        rvhListasUsuario.setAdapter(this.playListAdapterFavs);
+
+        //RecyclerView de las PlayList Recomendas (POP y ROCK)
+        rvhListasRecomendadas = findViewById(R.id.rvhRecomendados);
+        playListAdapterRec = new PlayListAdapter(this, database.recuperarListasRecomendadas());
+        rvhListasRecomendadas.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        rvhListasRecomendadas.setAdapter(this.playListAdapterRec);
+
 
         cnlBuscador.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +109,19 @@ public class MainPage extends AppCompatActivity {
         });
         // establecemos el saludo
         this.establecerSaludo();
+
+        playListAdapterRec.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+            }
+        });
+
+        playListAdapterFavs.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+        });
 
     }
     /*

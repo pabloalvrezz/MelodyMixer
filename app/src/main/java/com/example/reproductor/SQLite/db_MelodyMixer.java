@@ -273,6 +273,41 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return playlists;
     }
 
+    public List<PlayList> recuperarListasRecomendadas() {
+        String consulta = "SELECT * FROM PLAYLIST WHERE " + tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID_USUARIO + " IS NULL";
+        Cursor cursor = getReadableDatabase().rawQuery(consulta, null);
+
+        long idPlaylist;
+        int nombrePlaylistIndex, imgURLIndex;
+        String nombrePlaylist = "", imgURL = "";
+        PlayList playList;
+
+        // Lista para almacenar las playlists con idUsuario NULL
+        List<PlayList> playlists = new ArrayList<>();
+
+        // verificamos si se obtuvo resultados
+        while (cursor.moveToNext()) {
+            // Obtén los datos de cada fila y crea un objeto Playlist
+            idPlaylist = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_ID);
+            nombrePlaylistIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_NOMBRE);
+            imgURLIndex = cursor.getColumnIndex(tabla_PLAYLIST.ColumnasPlayList.COLUMNA_IMG);
+
+            // en caso de que haya playlists las agregamos a la lista
+            if (nombrePlaylistIndex >= 0) {
+                nombrePlaylist = cursor.getString(nombrePlaylistIndex);
+                imgURL = cursor.getString(imgURLIndex);
+                playList = new PlayList(idPlaylist, nombrePlaylist, null, imgURL);
+
+                playlists.add(playList);
+            }
+        }
+
+        // Cierra el cursor después de usarlo
+        cursor.close();
+
+        return playlists;
+    }
+
     // metodo que usaremos para verficiar si la cancion actual se encuentra en la playlist
     public boolean seEncuentraEnPlayList(PlayList playList, Canciones cancion) {
         SQLiteDatabase db = getReadableDatabase();

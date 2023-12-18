@@ -34,6 +34,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
     private Context context;
     private List<PlayList> playlists;
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
@@ -42,7 +43,20 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         return new ViewHolder(view);
     }
 
+    public PlayListAdapter(Context context, List<PlayList> playList){
+        this.context = context;
+        this.playlists = playList;
+    }
 
+    // Interfaz para el escuchador de clics
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    // Método para establecer el escuchador
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -54,6 +68,16 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                 .load(currentPlaylist.getImgURLPlaylist())
                 .placeholder(R.drawable.cargando_cancion_image)
                 .into(holder.imgListasHorizontal);
+
+        //Configurar el clic en el ViewHolder
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
+            }
+        });
     }
 
     @Override

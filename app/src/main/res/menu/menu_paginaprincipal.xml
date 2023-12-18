@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.example.reproductor.Entities.MainActivity"
+        android:layout_width="match_parent"
+        android:layout_height="67dp">
+
+        <item
+            android:id="@+id/Menu"
+            android:title="Menu"
+            android:icon="@drawable/menu"
+            app:showAsAction="ifRoom"
+            >
+            <menu>
+                <item android:id="@+id/AcercaDe"
+                    android:title="Acerca De" />
+                <item android:id="@+id/Perfil"
+                    android:title="Perfil de usuario" />
+                <item android:id="@+id/Salir"
+                    android:title="Cerrar Sesión" />
+            </menu>
+        </item>
+
+</menu>
+
+

@@ -128,6 +128,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.insert(tabla_PLAYLIST_CANCION.TABLE_NAME, null, values);
     }
 
+    // Metodo que usaremos para comprobar si existe el usuario
     public boolean existeUsuarioCorreo(String correo) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -308,12 +309,12 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return playlists;
     }
 
-    // metodo que usaremos para verficiar si la cancion actual se encuentra en la playlist
+    // Método que usaremos para verificar si la canción actual se encuentra en la playlist
     public boolean seEncuentraEnPlayList(PlayList playList, Canciones cancion) {
         SQLiteDatabase db = getReadableDatabase();
 
         // Consulta para verificar si la canción está en la playlist
-        String consulta = "SELECT * FROM " + tabla_PLAYLIST.TABLE_NAME +
+        String consulta = "SELECT * FROM " + tabla_PLAYLIST_CANCION.TABLE_NAME +
                 " WHERE " + tabla_PLAYLIST_CANCION.ColumnasPlayCanciones.COLUMNA_ID_PLAYLIST + " = ?" +
                 " AND " + tabla_PLAYLIST_CANCION.ColumnasPlayCanciones.COLUMNA_ID_CANCION + " = ?";
 
@@ -330,8 +331,9 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         cursor.close();
 
         return seEncuentraEnPlayList;
-
     }
+
+
 
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {

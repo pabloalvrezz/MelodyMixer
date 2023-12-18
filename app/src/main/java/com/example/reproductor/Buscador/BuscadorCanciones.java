@@ -113,7 +113,8 @@ public class BuscadorCanciones extends AppCompatActivity {
                 // Pasamos la cancion que ha seleccionado el usuario
                 intent.putExtra("cancionSeleccionada", cancionSeleccionada);
 
-                intent.putExtra("cancionesBuscador", (Serializable) listaCanciones);
+                // Pasamos el usuario actual
+                intent.putExtra("usuarioActual", usuarioActual);
 
                 startActivity(intent, options.toBundle());
             }

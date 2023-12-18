@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.reproductor.Entities.Canciones;
 import com.example.reproductor.Entities.PlayList;
+import com.example.reproductor.Entities.Usuarios;
 import com.example.reproductor.R;
 import com.example.reproductor.SQLite.db_MelodyMixer;
 
@@ -30,7 +31,8 @@ public class Reproductor extends AppCompatActivity {
     SQLiteDatabase db;
 
     private Canciones cancionActual;
-    private List<Canciones> cancionesBuscador;
+    private List<Canciones> cancionesPlaylist;
+    Usuarios usuarioActual;
 
     ImageView imgCancion;
     TextView txvTextoCancion;
@@ -47,6 +49,8 @@ public class Reproductor extends AppCompatActivity {
 
     Handler handler;
     Runnable runnable;
+
+    boolean consulta;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -67,7 +71,8 @@ public class Reproductor extends AppCompatActivity {
 
         // LLega objeto cancion para conseguir toda la información de la canción seleccionada
         cancionActual = (Canciones)this.getIntent().getSerializableExtra("cancionSeleccionada");
-        cancionesBuscador = (List<Canciones>) this.getIntent().getSerializableExtra("cancionesBuscador");
+        cancionesPlaylist = (List<Canciones>) this.getIntent().getSerializableExtra("cancionesPlaylist");
+        usuarioActual = (Usuarios)this.getIntent().getSerializableExtra("usuarioActual");
 
         //Conseguimos el url dado
         String imageUrl = cancionActual.getLinkImage();
@@ -86,8 +91,8 @@ public class Reproductor extends AppCompatActivity {
             mp.setDataSource(cancionActual.getLinkPreview());
             mp.prepare();
         }catch(IOException | IllegalStateException e){
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
         handler = new Handler();
 
         seekBar.setMax(mp.getDuration());
@@ -98,17 +103,17 @@ public class Reproductor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                        if(!botonPlay){
-                            imbPlay.setImageResource(R.drawable.pause_image);
-                            mp.start();
-                            playCicle();
-                            botonPlay = true;
-                        }
-                        else{
-                            imbPlay.setImageResource(R.drawable.play_image);
-                            mp.pause();
-                            botonPlay = false;
-                        }
+                    if(!botonPlay){
+                        imbPlay.setImageResource(R.drawable.pause_image);
+                        mp.start();
+                        playCicle();
+                        botonPlay = true;
+                    }
+                    else{
+                        imbPlay.setImageResource(R.drawable.play_image);
+                        mp.pause();
+                        botonPlay = false;
+                    }
                 }catch(IllegalStateException e){
                     e.printStackTrace();
                 }
@@ -132,10 +137,24 @@ public class Reproductor extends AppCompatActivity {
             }
         });
 
+        for(PlayList playlist : this.database.recuperarListasUsuario(usuarioActual)){
+            if(playlist.getNombre().equals("Favoritos")){
+                consulta = database.seEncuentraEnPlayList(playlist, cancionActual);
+            }
+        }
+
+        //Comprobamos si la canción esta en favoritos
+        if(consulta){
+            imbFavorita.setImageResource(R.drawable.fav_image);
+        }
+        else{
+            imbFavorita.setImageResource(R.drawable.no_fav_image);
+        }
         imbFavorita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
+
                 }catch(IllegalStateException e){
                     e.printStackTrace();
                 }

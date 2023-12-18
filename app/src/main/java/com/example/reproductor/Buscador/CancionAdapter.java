@@ -75,9 +75,6 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
                 .placeholder(R.drawable.cargando_cancion_image)
                 .into(holder.imgSongBuscador);
 
-        // obtenemos la posicion de la cancion seleccionada
-        this.posicionCancionSeleccionada = position;
-
         // Configurar el clic en el ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +93,7 @@ public class CancionAdapter extends RecyclerView.Adapter<CancionAdapter.ViewHold
                 MenuInflater menuInflater = popupMenu.getMenuInflater();
 
                 // Crear instancia de PopUpMenuLongClick
-                PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context, usuarioActual, listaCanciones, posicionCancionSeleccionada);
+                PopUpMenuLongClick popUpMenuLongClick = new PopUpMenuLongClick(context, usuarioActual, listaCanciones, position);
 
                 // Obtener el menú inflado
                 menuInflater.inflate(R.menu.pop_up, popupMenu.getMenu());

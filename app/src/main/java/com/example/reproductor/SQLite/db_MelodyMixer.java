@@ -24,7 +24,10 @@ import java.io.File;
 
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 public class db_MelodyMixer extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "MelodyMixer";
@@ -120,7 +123,11 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
     }
 
     //Método para añadir fila a PLAYLIST_CANCION
+<<<<<<< HEAD
     public void addPLCancion(SQLiteDatabase db, PlayList playList, Canciones cancion) {
+=======
+    public void addPLCancion(SQLiteDatabase db, PlayList playList, Canciones cancion){
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 
         ContentValues values = new ContentValues();
         values.put(tabla_PLAYLIST_CANCION.ColumnasPlayCanciones.COLUMNA_ID_PLAYLIST, playList.getId());
@@ -129,6 +136,10 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         db.insert(tabla_PLAYLIST_CANCION.TABLE_NAME, null, values);
     }
 
+<<<<<<< HEAD
+=======
+    // Metodo que usaremos para comprobar si existe el usuario
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
     public boolean existeUsuarioCorreo(String correo) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -262,7 +273,11 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
             if (nombrePlaylistIndex > 0) {
                 nombrePlaylist = cursor.getString(nombrePlaylistIndex);
                 urlPlaylist = cursor.getString(urlPlaylistIndex);
+<<<<<<< HEAD
                 playList = new PlayList(idPlaylist, nombrePlaylist, usuarioActual.getCorreo(), urlPlaylist);
+=======
+                playList = new PlayList(idPlaylist, nombrePlaylist,usuarioActual.getCorreo(), urlPlaylist);
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 
                 playlists.add(playList);
             }
@@ -309,7 +324,11 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         return playlists;
     }
 
+<<<<<<< HEAD
     // metodo que usaremos para verficiar si la cancion actual se encuentra en la playlist
+=======
+    // Método que usaremos para verificar si la canción actual se encuentra en la playlist
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
     public boolean seEncuentraEnPlayList(PlayList playList, Canciones cancion) {
         SQLiteDatabase db = getReadableDatabase();
 
@@ -331,15 +350,23 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
         cursor.close();
 
         return seEncuentraEnPlayList;
+<<<<<<< HEAD
 
     }
 
+=======
+    }
+
+
+
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
     //Método que comprueba y devuelve si la base de datos está creada
     public boolean isDatabaseExists(Context context) {
         File dbFile = context.getDatabasePath(DATABASE_NAME);
         return dbFile.exists();
     }
 
+<<<<<<< HEAD
     public void eliminarCancionFavoritos(PlayList playlist, Canciones canciones) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -375,5 +402,7 @@ public class db_MelodyMixer extends SQLiteOpenHelper {
 
         return isCancionEnTabla;
     }
+=======
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 
 }

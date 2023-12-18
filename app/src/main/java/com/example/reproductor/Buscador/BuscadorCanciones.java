@@ -173,4 +173,8 @@ public class BuscadorCanciones extends AppCompatActivity {
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003

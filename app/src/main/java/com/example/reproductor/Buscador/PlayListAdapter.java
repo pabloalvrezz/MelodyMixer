@@ -1,6 +1,11 @@
 package com.example.reproductor.Buscador;
 
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.content.Intent;
+import android.os.Parcelable;
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +22,15 @@ import com.example.reproductor.Entities.Usuarios;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< HEAD
 import com.example.reproductor.R;
 
+=======
+import com.example.reproductor.PlayList.CancionesPlayList;
+import com.example.reproductor.R;
+
+import java.io.Serializable;
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -74,6 +86,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if (listener != null) {
+<<<<<<< HEAD
+=======
+                    Intent intent = new Intent(context, CancionesPlayList.class);
+                    intent.putExtra("playlist", currentPlaylist);
+                    context.startActivity(intent);
+>>>>>>> b9a99f4fa3390dc09788601da8d7ac06790df003
                     listener.onItemClick(position);
                 }
             }
